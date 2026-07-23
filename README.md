@@ -31,7 +31,7 @@ touches the browser.
 }
 ```
 
-`candles` is 96 bars of 5-minute OHLC (roughly the last 8 hours), oldest
+`candles` is 96 bars of 30-minute OHLC (roughly the last 48 hours), oldest
 first, `time` as UTC unix seconds, straight from Twelve Data's
 `time_series` endpoint, ready to feed a Lightweight Charts candlestick
 series with no reshaping.

@@ -1,5 +1,5 @@
 """
-Fetches the current XAU/USD (gold spot) quote AND recent 5-minute candles
+Fetches the current XAU/USD (gold spot) quote AND recent 30-minute candles
 from Twelve Data, writes spot.json in the shape toro_session_desk.html's
 poll loop expects:
 
@@ -26,7 +26,7 @@ SYMBOL = "XAU/USD"
 QUOTE_URL = f"https://api.twelvedata.com/quote?symbol={SYMBOL}&apikey={API_KEY}"
 SERIES_URL = (
     f"https://api.twelvedata.com/time_series?symbol={SYMBOL}"
-    f"&interval=5min&outputsize=96&timezone=UTC&apikey={API_KEY}"
+    f"&interval=30min&outputsize=96&timezone=UTC&apikey={API_KEY}"
 )
 
 
