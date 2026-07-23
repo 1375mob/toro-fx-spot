@@ -19,14 +19,28 @@ touches the browser.
 
 ```json
 {
-  "spot": 4136.20,
-  "changePct": 1.46,
+  "spot": 4124.61,
+  "changePct": -0.14,
   "marketOpen": true,
-  "updated": "2026-07-22T21:00:00Z",
+  "updated": "2026-07-23T02:53:45Z",
   "source": "XAU/USD",
-  "contract": "Gold spot"
+  "contract": "Gold spot",
+  "candles": [
+    { "time": 1753239225, "open": 4124.61, "high": 4124.61, "low": 4124.61, "close": 4124.61 }
+  ]
 }
 ```
+
+`candles` is 96 bars of 5-minute OHLC (roughly the last 8 hours), oldest
+first, `time` as UTC unix seconds, straight from Twelve Data's
+`time_series` endpoint, ready to feed a Lightweight Charts candlestick
+series with no reshaping.
+
+## API usage
+
+Each run makes 2 calls (`/quote` + `/time_series`), every 5 minutes,
+so ~576 calls/day against Twelve Data's free 800/day limit. Leaves
+headroom, don't add more calls per run without checking the budget.
 
 ## Note
 

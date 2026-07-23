@@ -4,5 +4,8 @@
   "marketOpen": true,
   "updated": "2026-07-23T02:53:45Z",
   "source": "XAU/USD",
-  "contract": "Gold spot"
+  "contract": "Gold spot",
+  "candles": [
+    { "time": 1753239225, "open": 4124.61, "high": 4124.61, "low": 4124.61, "close": 4124.61 }
+  ]
 }
