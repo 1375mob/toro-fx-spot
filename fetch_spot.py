@@ -10,10 +10,12 @@ toro_session_desk.html's poll loop expects:
 candles is an array of {time, open, high, low, close}, oldest first, time
 as UTC unix seconds, ready for Lightweight Charts' candlestick series.
 
-drivers is an array of {key, label, symbol, value, changePct, dir, proxy}.
-`proxy` is non-empty when the slot fell back to a stand-in instrument, so
-the page can say what it is actually showing rather than mislabelling an
-ETF as a yield.
+drivers is an array of
+{key, label, symbol, value, changePct, dir, proxy, showValue}.
+`proxy` is non-empty when the slot is a stand-in instrument rather than the
+thing named on the card, and `showValue` is false in that case: an ETF's
+own price is not the yield or the barrel price, so only its direction and
+percent change are safe to publish.
 
 API budget (free tier: 800 credits/day, 8 requests/minute)
 ---------------------------------------------------------
@@ -58,16 +60,25 @@ SERIES_URL = (
 # Free tier allows 8 requests/minute, so space the driver calls out.
 THROTTLE_SECONDS = 9
 
-# Each slot is one column of the driver card. Candidates run best-first:
-# the real instrument, then an ETF proxy the free tier is far more likely
-# to serve. `invert` flips the change sign so the slot always reads in
-# terms of its own name (bond prices move opposite to yields).
+# Each slot is one column of the driver card. Candidates run best-first and
+# the first one that answers wins. `invert` flips the change sign so the slot
+# always reads in terms of its own name (bond prices move opposite to yields).
+#
+# A 2026-07-25 probe of this key found the direct instruments all 404:
+# US10Y, TNX, DXY, WTI/USD, USOIL, BRENT/USD. USDX answered but priced at
+# 25.5, nowhere near a dollar index, so it resolves to some other
+# instrument and is not trustworthy. That leaves ETF proxies only, which is
+# why every slot below carries a `proxy` note. If the Twelve Data plan is
+# ever upgraded, put the direct symbols back at the front of these lists:
+# the first-wins order means values start showing up on their own.
+#
+# `proxy` being set is the signal that the absolute price is meaningless
+# (USO's level is not the oil price, IEF's is not a yield). Only the change
+# and direction are safe to publish for those.
 DRIVER_SLOTS = [
     {
         "key": "rates",
         "candidates": [
-            {"sym": "US10Y", "label": "US 10Y"},
-            {"sym": "TNX", "label": "US 10Y"},
             {"sym": "IEF", "label": "Rates", "invert": True, "proxy": "IEF inv"},
             {"sym": "TLT", "label": "Rates", "invert": True, "proxy": "TLT inv"},
         ],
@@ -75,8 +86,6 @@ DRIVER_SLOTS = [
     {
         "key": "dollar",
         "candidates": [
-            {"sym": "DXY", "label": "Dollar"},
-            {"sym": "USDX", "label": "Dollar"},
             {"sym": "UUP", "label": "Dollar", "proxy": "UUP"},
             {"sym": "EUR/USD", "label": "Dollar", "invert": True, "proxy": "EURUSD inv"},
         ],
@@ -84,9 +93,6 @@ DRIVER_SLOTS = [
     {
         "key": "oil",
         "candidates": [
-            {"sym": "WTI/USD", "label": "Oil"},
-            {"sym": "USOIL", "label": "Oil"},
-            {"sym": "BRENT/USD", "label": "Brent"},
             {"sym": "USO", "label": "Oil", "proxy": "USO"},
         ],
     },
@@ -115,6 +121,7 @@ def as_driver(slot, cand, q):
     chg = float(q.get("percent_change", 0) or 0)
     if cand.get("invert"):
         chg = -chg
+    proxy = cand.get("proxy", "")
     return {
         "key": slot["key"],
         "label": cand["label"],
@@ -123,7 +130,10 @@ def as_driver(slot, cand, q):
         "changePct": round(chg, 2),
         # flat band stops rounding noise from reading as a direction
         "dir": "up" if chg > 0.02 else ("down" if chg < -0.02 else "flat"),
-        "proxy": cand.get("proxy", ""),
+        "proxy": proxy,
+        # a proxy's own price says nothing about the thing named on the card,
+        # so the page must not print it as if it did
+        "showValue": not proxy,
     }
 
 
