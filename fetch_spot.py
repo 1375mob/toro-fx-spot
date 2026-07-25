@@ -1,19 +1,43 @@
 """
-Fetches the current XAU/USD (gold spot) quote AND recent 30-minute candles
-(1 week lookback) from Twelve Data, writes spot.json in the shape
+Fetches the current XAU/USD (gold spot) quote, recent 30-minute candles
+(1 week lookback), and the cross-asset drivers behind the rate-channel
+regime read, from Twelve Data. Writes spot.json in the shape
 toro_session_desk.html's poll loop expects:
 
-  { spot, changePct, marketOpen, updated, source, contract, candles }
+  { spot, changePct, marketOpen, updated, source, contract, candles,
+    drivers, driversUpdated }
 
 candles is an array of {time, open, high, low, close}, oldest first, time
 as UTC unix seconds, ready for Lightweight Charts' candlestick series.
 
-Runs on a GitHub Actions schedule (see .github/workflows/update-spot.yml).
+drivers is an array of {key, label, symbol, value, changePct, dir, proxy}.
+`proxy` is non-empty when the slot fell back to a stand-in instrument, so
+the page can say what it is actually showing rather than mislabelling an
+ETF as a yield.
+
+API budget (free tier: 800 credits/day, 8 requests/minute)
+---------------------------------------------------------
+Gold costs 2 credits per run at every 5 minutes, which is 576/day and
+already most of the allowance. So drivers are only refetched on the
+half hour (~48 times/day, 3 credits each = 144), and carried forward
+from the previous spot.json on every other run. Total lands near 720.
+Do not fetch drivers every run, it does not fit.
+
+Probing for entitlements
+------------------------
+Run the workflow manually with probe_drivers=true to walk the full
+candidate list for each slot and print why each one lost. That costs
+~11 credits, so it is manual-only, never on the schedule. Once you know
+what this key serves, move the winners to the front of each candidate
+list and the steady-state run picks them up first.
+
 Requires a TWELVEDATA_KEY environment variable (set as a repo secret).
 """
 import json
 import os
 import sys
+import time
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -22,6 +46,8 @@ if not API_KEY:
     print("TWELVEDATA_KEY is not set", file=sys.stderr)
     sys.exit(1)
 
+PROBE = os.environ.get("GF_PROBE_DRIVERS") == "1"
+
 SYMBOL = "XAU/USD"
 QUOTE_URL = f"https://api.twelvedata.com/quote?symbol={SYMBOL}&apikey={API_KEY}"
 SERIES_URL = (
@@ -29,10 +55,76 @@ SERIES_URL = (
     f"&interval=30min&outputsize=336&timezone=UTC&apikey={API_KEY}"
 )
 
+# Free tier allows 8 requests/minute, so space the driver calls out.
+THROTTLE_SECONDS = 9
+
+# Each slot is one column of the driver card. Candidates run best-first:
+# the real instrument, then an ETF proxy the free tier is far more likely
+# to serve. `invert` flips the change sign so the slot always reads in
+# terms of its own name (bond prices move opposite to yields).
+DRIVER_SLOTS = [
+    {
+        "key": "rates",
+        "candidates": [
+            {"sym": "US10Y", "label": "US 10Y"},
+            {"sym": "TNX", "label": "US 10Y"},
+            {"sym": "IEF", "label": "Rates", "invert": True, "proxy": "IEF inv"},
+            {"sym": "TLT", "label": "Rates", "invert": True, "proxy": "TLT inv"},
+        ],
+    },
+    {
+        "key": "dollar",
+        "candidates": [
+            {"sym": "DXY", "label": "Dollar"},
+            {"sym": "USDX", "label": "Dollar"},
+            {"sym": "UUP", "label": "Dollar", "proxy": "UUP"},
+            {"sym": "EUR/USD", "label": "Dollar", "invert": True, "proxy": "EURUSD inv"},
+        ],
+    },
+    {
+        "key": "oil",
+        "candidates": [
+            {"sym": "WTI/USD", "label": "Oil"},
+            {"sym": "USOIL", "label": "Oil"},
+            {"sym": "BRENT/USD", "label": "Brent"},
+            {"sym": "USO", "label": "Oil", "proxy": "USO"},
+        ],
+    },
+]
+
 
 def fetch_json(url):
     with urllib.request.urlopen(url, timeout=15) as r:
         return json.load(r)
+
+
+def fetch_quote(symbol):
+    sym = urllib.parse.quote(symbol, safe="")
+    return fetch_json(f"https://api.twelvedata.com/quote?symbol={sym}&apikey={API_KEY}")
+
+
+def read_previous():
+    try:
+        with open("spot.json") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def as_driver(slot, cand, q):
+    chg = float(q.get("percent_change", 0) or 0)
+    if cand.get("invert"):
+        chg = -chg
+    return {
+        "key": slot["key"],
+        "label": cand["label"],
+        "symbol": cand["sym"],
+        "value": round(float(q["close"]), 2),
+        "changePct": round(chg, 2),
+        # flat band stops rounding noise from reading as a direction
+        "dir": "up" if chg > 0.02 else ("down" if chg < -0.02 else "flat"),
+        "proxy": cand.get("proxy", ""),
+    }
 
 
 try:
@@ -61,18 +153,68 @@ for v in reversed(series["values"]):  # Twelve Data returns newest first, we wan
         "close": round(float(v["close"]), 2),
     })
 
+# ---- cross-asset drivers ----
+prev = read_previous()
+now = datetime.now(timezone.utc)
+# the scheduled run lands every 5 minutes; take the one nearest each half hour
+due = now.minute < 5 or 30 <= now.minute < 35
+drivers = prev.get("drivers") or []
+drivers_updated = prev.get("driversUpdated") or ""
+diag = {}
+
+if PROBE or due or not drivers:
+    fresh = []
+    for slot in DRIVER_SLOTS:
+        # steady state stops at the first candidate that answers; a probe
+        # keeps going so the log shows what every symbol did
+        for cand in slot["candidates"]:
+            sym = cand["sym"]
+            try:
+                q = fetch_quote(sym)
+            except Exception as e:
+                diag[sym] = f"error: {e}"
+                time.sleep(THROTTLE_SECONDS)
+                continue
+            ok = isinstance(q, dict) and "close" in q
+            if ok:
+                diag[sym] = "ok"
+                if not any(d["key"] == slot["key"] for d in fresh):
+                    fresh.append(as_driver(slot, cand, q))
+            else:
+                code = q.get("code", "?") if isinstance(q, dict) else "?"
+                msg = str(q.get("message", ""))[:140] if isinstance(q, dict) else str(q)[:140]
+                diag[sym] = f"{code}: {msg}"
+            time.sleep(THROTTLE_SECONDS)
+            if ok and not PROBE:
+                break
+    # a slot that answered nothing this run keeps its last good value
+    # rather than blinking out of the card
+    if fresh:
+        by_key = {d["key"]: d for d in drivers}
+        for d in fresh:
+            by_key[d["key"]] = d
+        order = [s["key"] for s in DRIVER_SLOTS]
+        drivers = [by_key[k] for k in order if k in by_key]
+        drivers_updated = now.isoformat(timespec="seconds").replace("+00:00", "Z")
+
 out = {
     "spot": round(float(quote["close"]), 2),
     "changePct": round(float(quote.get("percent_change", 0) or 0), 2),
     "marketOpen": bool(quote.get("is_market_open", True)),
-    "updated": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+    "updated": now.isoformat(timespec="seconds").replace("+00:00", "Z"),
     "source": "XAU/USD",
     "contract": "Gold spot",
     "candles": candles,
+    "drivers": drivers,
+    "driversUpdated": drivers_updated,
 }
+if PROBE:
+    out["driverDiag"] = diag
 
 with open("spot.json", "w") as f:
     json.dump(out, f, indent=2)
     f.write("\n")
 
-print(f"wrote spot.json: spot={out['spot']} candles={len(candles)}")
+print(f"wrote spot.json: spot={out['spot']} candles={len(candles)} drivers={len(drivers)}")
+for k, v in diag.items():
+    print(f"  driver probe {k}: {v}")
