@@ -1,18 +1,11 @@
 {
-  "spot": 4055.92,
+  "spot": 4056.01,
   "changePct": 0.06,
   "marketOpen": true,
-  "updated": "2026-07-25T13:26:34Z",
+  "updated": "2026-07-25T13:43:18Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1784381400,
-      "open": 4010.53,
-      "high": 4010.71,
-      "low": 4010.47,
-      "close": 4010.58
-    },
     {
       "time": 1784383200,
       "open": 4010.53,
@@ -2356,7 +2349,14 @@
       "open": 4055.92,
       "high": 4056.1,
       "low": 4055.86,
-      "close": 4055.92
+      "close": 4055.99
+    },
+    {
+      "time": 1784986200,
+      "open": 4055.92,
+      "high": 4056.1,
+      "low": 4055.86,
+      "close": 4056.01
     }
   ],
   "drivers": [
@@ -2367,16 +2367,18 @@
       "value": 93.03,
       "changePct": -0.19,
       "dir": "down",
-      "proxy": "IEF inv"
+      "proxy": "IEF inv",
+      "showValue": false
     },
     {
       "key": "dollar",
       "label": "Dollar",
-      "symbol": "USDX",
-      "value": 25.5,
-      "changePct": 0.22,
+      "symbol": "UUP",
+      "value": 28.58,
+      "changePct": 0.07,
       "dir": "up",
-      "proxy": ""
+      "proxy": "UUP",
+      "showValue": false
     },
     {
       "key": "oil",
@@ -2385,22 +2387,16 @@
       "value": 136.69,
       "changePct": -2.01,
       "dir": "down",
-      "proxy": "USO"
+      "proxy": "USO",
+      "showValue": false
     }
   ],
-  "driversUpdated": "2026-07-25T13:26:34Z",
+  "driversUpdated": "2026-07-25T13:43:18Z",
   "driverDiag": {
-    "US10Y": "error: HTTP Error 404: Not Found",
-    "TNX": "error: HTTP Error 404: Not Found",
     "IEF": "ok",
     "TLT": "ok",
-    "DXY": "error: HTTP Error 404: Not Found",
-    "USDX": "ok",
     "UUP": "ok",
     "EUR/USD": "ok",
-    "WTI/USD": "error: HTTP Error 404: Not Found",
-    "USOIL": "error: HTTP Error 404: Not Found",
-    "BRENT/USD": "error: HTTP Error 404: Not Found",
     "USO": "ok"
   }
 }
