@@ -9,6 +9,9 @@ toro_session_desk.html's poll loop expects:
 
 candles is an array of {time, open, high, low, close}, oldest first, time
 as UTC unix seconds, ready for Lightweight Charts' candlestick series.
+336 bars are requested and any falling outside gold's trading week are
+dropped, so the count lands nearer 280 and still covers a full week of
+real sessions. See `in_session` for why that filtering is not optional.
 
 drivers is an array of
 {key, label, symbol, value, changePct, dir, proxy, showValue}.
@@ -42,6 +45,35 @@ import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+
+ET = ZoneInfo("America/New_York")
+
+
+def in_session(ts):
+    """True if a 30-minute bar opening at `ts` (UTC) falls inside gold's trading week.
+
+    Twelve Data does not stop emitting bars when the market shuts: it pads every
+    closed slot with a synthetic flat bar, open/high/low/close all inside a
+    quarter of a point. Left in, one weekend contributes ~100 dead bars that
+    render as a hairline and squeeze the real sessions into a corner of the
+    chart.
+
+    Boundaries are taken from the feed rather than assumed. This is XAU/USD
+    spot, not the futures contract, so it trades straight through the 17:00 ET
+    futures break: the 17:00 bars on Mon-Thu carry real range and must be kept.
+    Friday's last live bar is 17:00, with padding from 17:30. Sunday is dead
+    until 18:00, which opens with a 15-point bar.
+    """
+    et = ts.astimezone(ET)
+    dow = et.weekday()                              # Mon = 0 ... Sun = 6
+    if dow == 5:                                    # Saturday, shut all day
+        return False
+    if dow == 6:                                    # Sunday, only from the 18:00 reopen
+        return et.hour >= 18
+    if dow == 4 and (et.hour, et.minute) >= (17, 30):   # Friday close
+        return False
+    return True
 
 API_KEY = os.environ.get("TWELVEDATA_KEY")
 if not API_KEY:
@@ -153,15 +185,23 @@ if series.get("status") != "ok" or "values" not in series:
     sys.exit(1)
 
 candles = []
+dropped = 0
+dropped_live = []   # a dropped bar with real range means the session filter is wrong
 for v in reversed(series["values"]):  # Twelve Data returns newest first, we want oldest first
     dt = datetime.strptime(v["datetime"], "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
-    candles.append({
+    bar = {
         "time": int(dt.timestamp()),
         "open": round(float(v["open"]), 2),
         "high": round(float(v["high"]), 2),
         "low": round(float(v["low"]), 2),
         "close": round(float(v["close"]), 2),
-    })
+    }
+    if not in_session(dt):
+        dropped += 1
+        if bar["high"] - bar["low"] > 1.0:
+            dropped_live.append(f'{dt.astimezone(ET):%a %m-%d %H:%M} ET range {bar["high"] - bar["low"]:.2f}')
+        continue
+    candles.append(bar)
 
 # ---- cross-asset drivers ----
 prev = read_previous()
@@ -225,6 +265,12 @@ with open("spot.json", "w") as f:
     json.dump(out, f, indent=2)
     f.write("\n")
 
-print(f"wrote spot.json: spot={out['spot']} candles={len(candles)} drivers={len(drivers)}")
+print(f"wrote spot.json: spot={out['spot']} candles={len(candles)} "
+      f"(dropped {dropped} out-of-session) drivers={len(drivers)}")
+if dropped_live:
+    # loud on purpose: this means real trading was thrown away, not padding
+    print(f"WARNING: session filter dropped {len(dropped_live)} bar(s) with real range:", file=sys.stderr)
+    for d in dropped_live[:10]:
+        print(f"  {d}", file=sys.stderr)
 for k, v in diag.items():
     print(f"  driver probe {k}: {v}")
