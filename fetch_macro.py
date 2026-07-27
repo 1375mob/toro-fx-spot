@@ -219,7 +219,14 @@ def fetch_fred(series_id, days=90):
         try:
             body = _get(url)
         except urllib.error.HTTPError as e:
-            notes.append(f"{name} HTTP {e.code}")
+            # FRED explains a rejected key in the body ("the value for
+            # variable api_key is not registered"), and without it a wrong
+            # or unregistered key looks identical to an outage.
+            try:
+                detail = e.read().decode("utf-8", "replace")[:160].replace("\n", " ")
+            except Exception:
+                detail = ""
+            notes.append(f"{name} HTTP {e.code} {detail}".rstrip())
             continue
         except Exception as e:
             notes.append(f"{name} {type(e).__name__} after {time.monotonic()-began:.1f}s")
