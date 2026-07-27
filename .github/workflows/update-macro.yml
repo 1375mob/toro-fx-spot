@@ -41,11 +41,24 @@ jobs:
       - name: Logic self-test
         run: python3 macro_logic.py
 
-      # Branch verification only: reports what each source returned and the
-      # full verdict, writing nothing.
-      - name: Source probe
+      # TEMPORARY, branch verification only. fred.stlouisfed.org (the
+      # website) blackholes this runner: every series, both endpoints,
+      # timing out at exactly the budget rather than refusing. Checking
+      # whether api.stlouisfed.org (the actual API) is reachable, since a
+      # fast 4xx for a missing key proves the host answers and a key would
+      # be enough. Short timeouts so a hang is obvious.
+      - name: Reachability check
         if: ${{ github.event_name == 'push' }}
-        run: python3 fetch_macro.py --probe
+        run: |
+          for u in \
+            "https://api.stlouisfed.org/fred/series/observations?series_id=DGS10" \
+            "https://fred.stlouisfed.org/data/DGS10.txt" \
+            "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX"
+          do
+            printf '%-72s ' "${u:0:72}"
+            curl -s -m 12 -o /dev/null -w 'HTTP %{http_code} in %{time_total}s\n' "$u" \
+              || echo "TIMEOUT/FAIL after 12s"
+          done
 
       - name: Build macro.json
         run: |
