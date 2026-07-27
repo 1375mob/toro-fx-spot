@@ -67,7 +67,27 @@ jobs:
         run: |
           git config user.name "spot-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add macro.json
-          git diff --staged --quiet || git commit -m "Update macro compass"
-          git pull --rebase --autostash origin ${GITHUB_REF_NAME}
-          git push origin HEAD:${GITHUB_REF_NAME}
+          # macro.json is regenerated in full every run, so rebasing its
+          # content over a concurrent run's copy conflicts with itself every
+          # time: two runs queued back to back is enough to fail the job.
+          # Move the branch pointer instead of merging the file. Take
+          # whatever the remote has, then lay this run's fresh build on top,
+          # which is always the one we want since it is strictly newer.
+          for attempt in 1 2 3; do
+            git fetch -q origin "$GITHUB_REF_NAME"
+            git reset -q --soft "origin/$GITHUB_REF_NAME"
+            git add macro.json
+            if git diff --staged --quiet; then
+              echo "macro.json unchanged, nothing to push"
+              exit 0
+            fi
+            git commit -q -m "Update macro compass"
+            if git push -q origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push raced another run, retrying"
+            sleep 3
+          done
+          echo "could not push after 3 attempts" >&2
+          exit 1
