@@ -61,6 +61,11 @@ jobs:
           done
 
       - name: Build macro.json
+        env:
+          # Absent, the compass still builds: the dollar, 10Y, 2Y and
+          # inflation-proxy rows come from Yahoo. Real yield, breakeven
+          # and R13 go N/A until the secret exists.
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
           if [ "${{ inputs.probe }}" = "true" ]; then
             python3 fetch_macro.py --probe

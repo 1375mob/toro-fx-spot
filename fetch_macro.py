@@ -41,6 +41,7 @@ Usage:
     python fetch_macro.py --probe    # print diagnostics, write nothing
 """
 import json
+import os
 import re
 import sys
 import time
@@ -56,6 +57,12 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 # reached when the static file is unavailable, so it is worth waiting out
 # rather than dropping half the compass to a timeout.
 TIMEOUT = 45
+
+# Free key from https://fredaccount.stlouisfed.org/apikeys, set as the
+# FRED_API_KEY repo secret. Without it the real-yield, breakeven and R13
+# rows go N/A, because the no-key website fallbacks cannot be reached from
+# a runner. Everything else still renders.
+FRED_API_KEY = os.environ.get("FRED_API_KEY", "").strip()
 
 # Yahoo slots. `proxy` set means the printed level would be misleading, so
 # only direction and change may be published, same contract fetch_spot.py
@@ -106,8 +113,28 @@ def fetch_yahoo(symbol):
     """
     url = ("https://query1.finance.yahoo.com/v8/finance/chart/"
            + urllib.parse.quote(symbol) + "?range=1mo&interval=1d")
+
+    # Actions runners share IP pools that Yahoo rate-limits, and a 429 here
+    # is routine rather than exceptional: the same call answered fine
+    # minutes earlier in an adjacent run. Back off and retry before giving
+    # up, since a dropped row silently changes the score.
+    body = None
+    for attempt, wait in enumerate((2, 6, 15)):
+        try:
+            body = _get(url)
+            break
+        except urllib.error.HTTPError as e:
+            if e.code != 429:
+                return None
+            if attempt < 2:
+                time.sleep(wait)
+        except Exception:
+            return None
+    if body is None:
+        return None
+
     try:
-        res = (json.loads(_get(url)).get("chart") or {}).get("result")
+        res = (json.loads(body).get("chart") or {}).get("result")
         if not res:
             return None
         node = res[0]
@@ -144,6 +171,17 @@ def _parse_fred(body):
     return out
 
 
+def _parse_fred_json(body):
+    """{date: value} from the FRED API's observations payload."""
+    out = {}
+    for ob in json.loads(body).get("observations", []):
+        try:
+            out[ob["date"]] = float(ob["value"])
+        except (KeyError, TypeError, ValueError):
+            continue          # '.' on a holiday
+    return out
+
+
 def fetch_fred(series_id, days=90):
     """({date_str: float}, note) for a FRED series.
 
@@ -158,7 +196,19 @@ def fetch_fred(series_id, days=90):
     """
     start = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
     sid = urllib.parse.quote(series_id)
-    candidates = [
+
+    # The API host is a different machine from the website and answers in
+    # ~0.15s from a runner, so it goes first whenever a key is configured.
+    # The website endpoints below are kept only as a no-key fallback: they
+    # redirect, and the redirect target blackholes datacenter IPs, which is
+    # what produced four identical timeouts at exactly the budget.
+    candidates = []
+    if FRED_API_KEY:
+        candidates.append(("api", (
+            "https://api.stlouisfed.org/fred/series/observations"
+            f"?series_id={sid}&api_key={urllib.parse.quote(FRED_API_KEY)}"
+            f"&file_type=json&observation_start={start}")))
+    candidates += [
         ("txt", f"https://fred.stlouisfed.org/data/{sid}.txt"),
         ("csv", f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={start}"),
     ]
@@ -175,7 +225,7 @@ def fetch_fred(series_id, days=90):
             notes.append(f"{name} {type(e).__name__} after {time.monotonic()-began:.1f}s")
             continue
 
-        parsed = _parse_fred(body)
+        parsed = _parse_fred_json(body) if name == "api" else _parse_fred(body)
         if parsed:
             # the .txt file carries the full history, back to 1997 for some
             # of these; only the recent window is ever read
