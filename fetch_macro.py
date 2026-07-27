@@ -41,7 +41,9 @@ Usage:
     python fetch_macro.py --probe    # print diagnostics, write nothing
 """
 import json
+import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -50,7 +52,10 @@ from datetime import datetime, timedelta, timezone
 import macro_logic as L
 
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-TIMEOUT = 20
+# Generous on purpose: FRED's generated CSV is the slow path and only gets
+# reached when the static file is unavailable, so it is worth waiting out
+# rather than dropping half the compass to a timeout.
+TIMEOUT = 45
 
 # Yahoo slots. `proxy` set means the printed level would be misleading, so
 # only direction and change may be published, same contract fetch_spot.py
@@ -116,39 +121,71 @@ def fetch_yahoo(symbol):
         return None
 
 
-def fetch_fred(series_id, days=90):
-    """({date_str: float}, error_or_empty) for a FRED series.
+DATE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})[\s,]+(\S+)\s*$")
 
-    Returns the reason rather than swallowing it. An empty dict with no
-    error means the series parsed but held nothing usable, which is a very
-    different problem from being blocked, and the two are indistinguishable
-    once the exception is gone.
+
+def _parse_fred(body):
+    """Pull {date: value} out of either FRED text format.
+
+    fredgraph.csv gives 'DATE,VALUE' and the static .txt gives a titled
+    header then whitespace-padded columns, so match on the shape of a row
+    instead of the file: a date, a separator, a value. Missing observations
+    print '.' in both and are dropped.
     """
-    start = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
-    url = (f"https://fred.stlouisfed.org/graph/fredgraph.csv"
-           f"?id={urllib.parse.quote(series_id)}&cosd={start}")
     out = {}
-    try:
-        body = _get(url)
-    except urllib.error.HTTPError as e:
-        return {}, f"HTTP {e.code} {e.reason}"
-    except Exception as e:
-        return {}, f"{type(e).__name__}: {e}"
-
-    lines = body.replace("\r", "").strip().splitlines()
-    for line in lines[1:]:
-        parts = line.split(",")
-        if len(parts) != 2 or parts[1] in (".", ""):
+    for line in body.replace("\r", "").splitlines():
+        m = DATE_RE.match(line.strip())
+        if not m:
             continue
         try:
-            out[parts[0]] = float(parts[1])
+            out[m.group(1)] = float(m.group(2))
         except ValueError:
+            continue          # '.' on a holiday
+    return out
+
+
+def fetch_fred(series_id, days=90):
+    """({date_str: float}, note) for a FRED series.
+
+    Candidates run best-first and the first that answers wins, same shape
+    as fetch_spot.py's symbol slots.
+
+    fredgraph.csv renders on demand and timed out on all four series from
+    an Actions runner at a 20s budget while answering fine from a desktop.
+    The .txt endpoint is a static file, so it goes first and the generated
+    CSV is only the fallback. Errors are returned rather than swallowed:
+    an empty series and a blocked request need to be told apart.
+    """
+    start = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+    sid = urllib.parse.quote(series_id)
+    candidates = [
+        ("txt", f"https://fred.stlouisfed.org/data/{sid}.txt"),
+        ("csv", f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={start}"),
+    ]
+
+    notes = []
+    for name, url in candidates:
+        began = time.monotonic()
+        try:
+            body = _get(url)
+        except urllib.error.HTTPError as e:
+            notes.append(f"{name} HTTP {e.code}")
             continue
-    if not out:
-        # show what actually came back, so an HTML error page or a login
-        # wall is obvious instead of looking like an empty series
-        return {}, f"parsed 0 rows from {len(lines)} lines: {body[:120]!r}"
-    return out, ""
+        except Exception as e:
+            notes.append(f"{name} {type(e).__name__} after {time.monotonic()-began:.1f}s")
+            continue
+
+        parsed = _parse_fred(body)
+        if parsed:
+            # the .txt file carries the full history, back to 1997 for some
+            # of these; only the recent window is ever read
+            cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+            trimmed = {d: v for d, v in parsed.items() if d >= cutoff}
+            keep = trimmed or parsed
+            return keep, f"{name} in {time.monotonic()-began:.1f}s"
+        notes.append(f"{name} parsed 0 rows: {body[:90]!r}")
+
+    return {}, "; ".join(notes)
 
 
 # ----------------------------------------------------------------- alignment
@@ -198,9 +235,10 @@ def build(probe=False):
 
     fred = {}
     for sid in FRED_SERIES:
-        s, err = fetch_fred(sid)
+        s, note = fetch_fred(sid)
         fred[sid] = s
-        diag[sid] = f"{len(s)} pts, last {max(s)}" if s else f"NO DATA - {err}"
+        diag[sid] = (f"{len(s)} pts, last {max(s)} via {note}" if s
+                     else f"NO DATA - {note}")
 
     # Real yield and breakeven must share a window; see module docstring.
     _, r_deltas, infl_as_of, infl_prior = aligned_deltas(fred, ("DFII10", "T10YIE"))
