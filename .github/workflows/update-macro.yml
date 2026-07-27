@@ -8,11 +8,6 @@ name: Update macro compass
 # a snapshot read, so the 5-minute cadence would be churn for nothing.
 
 on:
-  # TEMPORARY, remove before merging to main. GitHub will not dispatch or
-  # schedule a workflow that is not yet on the default branch, so this is
-  # the only way to prove the job green before it lands.
-  push:
-    branches: [add-macro-compass]
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
@@ -41,26 +36,23 @@ jobs:
       - name: Logic self-test
         run: python3 macro_logic.py
 
-      # TEMPORARY, branch verification only. Reports what every source
-      # returned and the full verdict, writing nothing.
+      # Manual only. Reports what every source returned and the full
+      # verdict, writing nothing, for when a row goes N/A and the cause
+      # is not obvious from macro.json alone.
       - name: Source probe
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ inputs.probe == true }}
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python3 fetch_macro.py --probe
 
       - name: Build macro.json
+        if: ${{ inputs.probe != true }}
         env:
           # Absent, the compass still builds: the dollar, 10Y, 2Y and
           # inflation-proxy rows come from Yahoo. Real yield, breakeven
           # and R13 go N/A until the secret exists.
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-        run: |
-          if [ "${{ inputs.probe }}" = "true" ]; then
-            python3 fetch_macro.py --probe
-          else
-            python3 fetch_macro.py
-          fi
+        run: python3 fetch_macro.py
 
       - name: Commit and push if changed
         if: ${{ inputs.probe != true }}
