@@ -1,0 +1,85 @@
+name: Update macro compass
+
+# Deliberately separate from update-spot.yml rather than another step inside
+# it. The Session Desk's chart and price come from spot.json, so a failure
+# here must not be able to stall that feed, and neither source used here
+# touches the Twelve Data budget update-spot.yml is already close to
+# spending. Every 15 minutes: FRED moves once a day and the Yahoo rows are
+# a snapshot read, so the 5-minute cadence would be churn for nothing.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: 'Print source diagnostics and the full verdict without writing macro.json'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-macro
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Gate: the threshold and R13 logic is asserted against known values
+      # before anything is allowed to fetch or publish. A logic regression
+      # fails the job here rather than quietly shipping a wrong bias.
+      - name: Logic self-test
+        run: python3 macro_logic.py
+
+      # Manual only. Reports what every source returned and the full
+      # verdict, writing nothing, for when a row goes N/A and the cause
+      # is not obvious from macro.json alone.
+      - name: Source probe
+        if: ${{ inputs.probe == true }}
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python3 fetch_macro.py --probe
+
+      - name: Build macro.json
+        if: ${{ inputs.probe != true }}
+        env:
+          # Absent, the compass still builds: the dollar, 10Y, 2Y and
+          # inflation-proxy rows come from Yahoo. Real yield, breakeven
+          # and R13 go N/A until the secret exists.
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python3 fetch_macro.py
+
+      - name: Commit and push if changed
+        if: ${{ inputs.probe != true }}
+        run: |
+          git config user.name "spot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          # macro.json is regenerated in full every run, so rebasing its
+          # content over a concurrent run's copy conflicts with itself every
+          # time: two runs queued back to back is enough to fail the job.
+          # Move the branch pointer instead of merging the file. Take
+          # whatever the remote has, then lay this run's fresh build on top,
+          # which is always the one we want since it is strictly newer.
+          for attempt in 1 2 3; do
+            git fetch -q origin "$GITHUB_REF_NAME"
+            git reset -q --soft "origin/$GITHUB_REF_NAME"
+            git add macro.json
+            if git diff --staged --quiet; then
+              echo "macro.json unchanged, nothing to push"
+              exit 0
+            fi
+            git commit -q -m "Update macro compass"
+            if git push -q origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push raced another run, retrying"
+            sleep 3
+          done
+          echo "could not push after 3 attempts" >&2
+          exit 1

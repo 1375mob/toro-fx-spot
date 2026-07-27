@@ -1,0 +1,83 @@
+{
+  "updated": "2026-07-27T03:49:06Z",
+  "eventDay": false,
+  "readings": {
+    "dxy_change_pct": -0.2493,
+    "y10": 4.679,
+    "y10_delta_bps": -2.4,
+    "y2": 4.37,
+    "y2_delta_bps": 1.6,
+    "real": 2.43,
+    "real_delta_bps": 4.0,
+    "breakeven": 2.28,
+    "be_delta_bps": 0.0,
+    "tip_ief_change_pct": -0.1842,
+    "proxy_change": -4.7139
+  },
+  "verdict": {
+    "dxyPressure": "Bullish",
+    "y2Pressure": "Neutral",
+    "rateComplexPressure": "Neutral",
+    "nominalRegime": "> 4.60",
+    "nearestNominalLevel": 4.6,
+    "distanceToNominalBps": 7.9,
+    "realRead": "Gold Headwind",
+    "breakevenRead": "Flat",
+    "realProxyDirection": 1,
+    "realProxyText": "REAL UP",
+    "realProxyConfirmation": "REAL DIVERGES",
+    "inflationProxyRead": "Inflation Down",
+    "inflationState": "LIVE PROXY DOWN",
+    "r13": "REAL-LED",
+    "score": 3,
+    "bias": "Moderate Bullish Gold",
+    "tone": "bull"
+  },
+  "provenance": {
+    "y10": {
+      "source": "Yahoo ^TNX",
+      "live": true,
+      "showValue": true
+    },
+    "dxy": {
+      "source": "Yahoo DX-Y.NYB",
+      "live": true,
+      "showValue": true
+    },
+    "y2": {
+      "source": "FRED DGS2 level + 2YY=F delta",
+      "live": true,
+      "showValue": true,
+      "levelAsOf": "2026-07-23",
+      "note": "level is EOD cash, change is the yield future"
+    },
+    "real": {
+      "source": "FRED DFII10",
+      "live": false,
+      "showValue": true,
+      "asOf": "2026-07-23"
+    },
+    "breakeven": {
+      "source": "FRED T10YIE",
+      "live": false,
+      "showValue": true,
+      "asOf": "2026-07-23"
+    },
+    "realProxy": {
+      "source": "Yahoo TIP/IEF",
+      "live": true,
+      "showValue": false
+    },
+    "inflProxy": {
+      "source": "Yahoo CL=F",
+      "live": true,
+      "showValue": true,
+      "label": "CL"
+    }
+  },
+  "window": {
+    "asOf": "2026-07-23",
+    "prior": "2026-07-22",
+    "decompositionDriftBps": 0.0
+  }
+}
