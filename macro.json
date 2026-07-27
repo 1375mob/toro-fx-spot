@@ -1,18 +1,18 @@
 {
-  "updated": "2026-07-27T03:39:30Z",
+  "updated": "2026-07-27T03:45:52Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.2552,
+    "dxy_change_pct": -0.2041,
     "y10": 4.679,
-    "y10_delta_bps": -2.4,
-    "y2": null,
+    "y10_delta_bps": 2.2,
+    "y2": 4.37,
     "y2_delta_bps": 1.6,
-    "real": null,
-    "real_delta_bps": null,
-    "breakeven": null,
-    "be_delta_bps": null,
-    "tip_ief_change_pct": -0.1842,
-    "proxy_change": -4.5124
+    "real": 2.43,
+    "real_delta_bps": 4.0,
+    "breakeven": 2.28,
+    "be_delta_bps": 0.0,
+    "tip_ief_change_pct": -0.1755,
+    "proxy_change": -4.6803
   },
   "verdict": {
     "dxyPressure": "Bullish",
@@ -21,14 +21,14 @@
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
     "distanceToNominalBps": 7.9,
-    "realRead": "N/A",
-    "breakevenRead": "N/A",
+    "realRead": "Gold Headwind",
+    "breakevenRead": "Flat",
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
-    "realProxyConfirmation": "REAL DIVERGES",
+    "realProxyConfirmation": "REAL CONFIRMS",
     "inflationProxyRead": "Inflation Down",
     "inflationState": "LIVE PROXY DOWN",
-    "r13": "N/A",
+    "r13": "REAL-LED",
     "score": 3,
     "bias": "Moderate Bullish Gold",
     "tone": "bull"
@@ -48,20 +48,20 @@
       "source": "FRED DGS2 level + 2YY=F delta",
       "live": true,
       "showValue": true,
-      "levelAsOf": null,
+      "levelAsOf": "2026-07-23",
       "note": "level is EOD cash, change is the yield future"
     },
     "real": {
       "source": "FRED DFII10",
       "live": false,
       "showValue": true,
-      "asOf": null
+      "asOf": "2026-07-23"
     },
     "breakeven": {
       "source": "FRED T10YIE",
       "live": false,
       "showValue": true,
-      "asOf": null
+      "asOf": "2026-07-23"
     },
     "realProxy": {
       "source": "Yahoo TIP/IEF",
@@ -76,8 +76,8 @@
     }
   },
   "window": {
-    "asOf": null,
-    "prior": null,
-    "decompositionDriftBps": null
+    "asOf": "2026-07-23",
+    "prior": "2026-07-22",
+    "decompositionDriftBps": 0.0
   }
 }
