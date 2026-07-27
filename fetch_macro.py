@@ -117,23 +117,38 @@ def fetch_yahoo(symbol):
 
 
 def fetch_fred(series_id, days=90):
-    """{date_str: float} for a FRED series. Holidays print '.' and are dropped."""
+    """({date_str: float}, error_or_empty) for a FRED series.
+
+    Returns the reason rather than swallowing it. An empty dict with no
+    error means the series parsed but held nothing usable, which is a very
+    different problem from being blocked, and the two are indistinguishable
+    once the exception is gone.
+    """
     start = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
     url = (f"https://fred.stlouisfed.org/graph/fredgraph.csv"
            f"?id={urllib.parse.quote(series_id)}&cosd={start}")
     out = {}
     try:
-        for line in _get(url).replace("\r", "").strip().splitlines()[1:]:
-            parts = line.split(",")
-            if len(parts) != 2 or parts[1] in (".", ""):
-                continue
-            try:
-                out[parts[0]] = float(parts[1])
-            except ValueError:
-                continue
-    except Exception:
-        return {}
-    return out
+        body = _get(url)
+    except urllib.error.HTTPError as e:
+        return {}, f"HTTP {e.code} {e.reason}"
+    except Exception as e:
+        return {}, f"{type(e).__name__}: {e}"
+
+    lines = body.replace("\r", "").strip().splitlines()
+    for line in lines[1:]:
+        parts = line.split(",")
+        if len(parts) != 2 or parts[1] in (".", ""):
+            continue
+        try:
+            out[parts[0]] = float(parts[1])
+        except ValueError:
+            continue
+    if not out:
+        # show what actually came back, so an HTML error page or a login
+        # wall is obvious instead of looking like an empty series
+        return {}, f"parsed 0 rows from {len(lines)} lines: {body[:120]!r}"
+    return out, ""
 
 
 # ----------------------------------------------------------------- alignment
@@ -183,10 +198,9 @@ def build(probe=False):
 
     fred = {}
     for sid in FRED_SERIES:
-        s = fetch_fred(sid)
+        s, err = fetch_fred(sid)
         fred[sid] = s
-        last = max(s) if s else "-"
-        diag[sid] = f"{len(s)} pts, last {last}" if s else "no data"
+        diag[sid] = f"{len(s)} pts, last {max(s)}" if s else f"NO DATA - {err}"
 
     # Real yield and breakeven must share a window; see module docstring.
     _, r_deltas, infl_as_of, infl_prior = aligned_deltas(fred, ("DFII10", "T10YIE"))
