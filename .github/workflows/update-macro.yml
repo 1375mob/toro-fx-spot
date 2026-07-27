@@ -1,0 +1,66 @@
+name: Update macro compass
+
+# Deliberately separate from update-spot.yml rather than another step inside
+# it. The Session Desk's chart and price come from spot.json, so a failure
+# here must not be able to stall that feed, and neither source used here
+# touches the Twelve Data budget update-spot.yml is already close to
+# spending. Every 15 minutes: FRED moves once a day and the Yahoo rows are
+# a snapshot read, so the 5-minute cadence would be churn for nothing.
+
+on:
+  # TEMPORARY, remove before merging to main. GitHub will not dispatch or
+  # schedule a workflow that is not yet on the default branch, so this is
+  # the only way to prove the job green before it lands.
+  push:
+    branches: [add-macro-compass]
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: 'Print source diagnostics and the full verdict without writing macro.json'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-macro
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Gate: the threshold and R13 logic is asserted against known values
+      # before anything is allowed to fetch or publish. A logic regression
+      # fails the job here rather than quietly shipping a wrong bias.
+      - name: Logic self-test
+        run: python3 macro_logic.py
+
+      # Branch verification only: reports what each source returned and the
+      # full verdict, writing nothing.
+      - name: Source probe
+        if: ${{ github.event_name == 'push' }}
+        run: python3 fetch_macro.py --probe
+
+      - name: Build macro.json
+        run: |
+          if [ "${{ inputs.probe }}" = "true" ]; then
+            python3 fetch_macro.py --probe
+          else
+            python3 fetch_macro.py
+          fi
+
+      - name: Commit and push if changed
+        if: ${{ inputs.probe != true }}
+        run: |
+          git config user.name "spot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add macro.json
+          git diff --staged --quiet || git commit -m "Update macro compass"
+          git pull --rebase --autostash origin ${GITHUB_REF_NAME}
+          git push origin HEAD:${GITHUB_REF_NAME}
