@@ -64,6 +64,10 @@ TIMEOUT = 45
 # a runner. Everything else still renders.
 FRED_API_KEY = os.environ.get("FRED_API_KEY", "").strip()
 
+# Trailing points kept per row for the panel's sparklines. Enough to read a
+# trend, short enough that the whole file stays a cheap poll.
+SPARK_POINTS = 30
+
 # Yahoo slots. `proxy` set means the printed level would be misleading, so
 # only direction and change may be published, same contract fetch_spot.py
 # uses for its ETF stand-ins.
@@ -143,7 +147,10 @@ def fetch_yahoo(symbol):
             return None
         px = node.get("meta", {}).get("regularMarketPrice")
         price = float(px) if px is not None else float(closes[-1])
-        return {"price": price, "prev": float(closes[-2])}
+        # `series` feeds the panel's inline sparklines. Oldest first, capped
+        # so macro.json stays small enough to poll on a phone.
+        return {"price": price, "prev": float(closes[-2]),
+                "series": [round(float(c), 4) for c in closes[-SPARK_POINTS:]]}
     except Exception:
         return None
 
@@ -345,12 +352,32 @@ def build(probe=False):
     verdict = L.compose(readings)
     now = datetime.now(timezone.utc)
 
+    def fred_spark(sid):
+        s = fred.get(sid) or {}
+        return [round(s[d], 4) for d in sorted(s)[-SPARK_POINTS:]]
+
+    def yahoo_spark(key):
+        q = quotes.get(key)
+        return (q or {}).get("series", [])
+
+    # Sparklines are per row, oldest first. A row with no history renders as
+    # a flat gap rather than a broken chart, so an empty list is fine.
+    spark = {
+        "dxy": yahoo_spark("dxy"),
+        "y10": yahoo_spark("y10"),
+        "wti": yahoo_spark("wti"),
+        "y2": fred_spark("DGS2"),
+        "real": fred_spark("DFII10"),
+        "breakeven": fred_spark("T10YIE"),
+    }
+
     out = {
         "updated": now.isoformat(timespec="seconds").replace("+00:00", "Z"),
         "eventDay": False,
         "readings": {k: (round(v, 4) if isinstance(v, float) else v)
                      for k, v in readings.items()},
         "verdict": verdict,
+        "spark": spark,
         "provenance": {
             "y10":  {"source": "Yahoo ^TNX", "live": True, "showValue": True},
             "dxy":  {"source": "Yahoo DX-Y.NYB", "live": True, "showValue": True},
