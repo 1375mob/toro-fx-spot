@@ -1,32 +1,11 @@
 {
-  "spot": 4020.46,
-  "changePct": -0.2,
+  "spot": 4019.24,
+  "changePct": -0.23,
   "marketOpen": true,
-  "updated": "2026-07-28T22:29:34Z",
+  "updated": "2026-07-28T23:32:44Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1784673000,
-      "open": 4082.11,
-      "high": 4085.3,
-      "low": 4078.8,
-      "close": 4081.02
-    },
-    {
-      "time": 1784674800,
-      "open": 4080.94,
-      "high": 4082.8,
-      "low": 4079.43,
-      "close": 4081.97
-    },
-    {
-      "time": 1784676600,
-      "open": 4082.0,
-      "high": 4082.63,
-      "low": 4079.63,
-      "close": 4080.48
-    },
     {
       "time": 1784678400,
       "open": 4079.96,
@@ -1678,6 +1657,27 @@
       "high": 4029.33,
       "low": 4017.35,
       "close": 4020.46
+    },
+    {
+      "time": 1785277800,
+      "open": 4019.86,
+      "high": 4021.53,
+      "low": 4013.94,
+      "close": 4019.85
+    },
+    {
+      "time": 1785279600,
+      "open": 4019.52,
+      "high": 4022.99,
+      "low": 4015.54,
+      "close": 4018.24
+    },
+    {
+      "time": 1785281400,
+      "open": 4018.51,
+      "high": 4019.36,
+      "low": 4018.51,
+      "close": 4019.24
     }
   ],
   "drivers": [
@@ -1685,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 93.28,
-      "changePct": -0.27,
+      "value": 93.56,
+      "changePct": -0.3,
       "dir": "down",
       "proxy": "IEF inv",
       "showValue": false
@@ -1695,9 +1695,9 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 28.6,
-      "changePct": 0.07,
-      "dir": "up",
+      "value": 28.58,
+      "changePct": -0.07,
+      "dir": "down",
       "proxy": "UUP",
       "showValue": false
     },
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 124.76,
-      "changePct": -8.73,
+      "value": 120.49,
+      "changePct": -3.42,
       "dir": "down",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-07-27T23:30:35Z"
+  "driversUpdated": "2026-07-28T23:32:44Z"
 }
