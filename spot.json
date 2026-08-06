@@ -1,32 +1,11 @@
 {
-  "spot": 4276.49,
-  "changePct": 0.69,
+  "spot": 4297.96,
+  "changePct": 1.2,
   "marketOpen": true,
-  "updated": "2026-08-05T23:38:17Z",
+  "updated": "2026-08-06T01:02:51Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1785369600,
-      "open": 4085.58,
-      "high": 4086.3,
-      "low": 4073.32,
-      "close": 4074.17
-    },
-    {
-      "time": 1785371400,
-      "open": 4074.5,
-      "high": 4076.86,
-      "low": 4065.04,
-      "close": 4071.02
-    },
-    {
-      "time": 1785373200,
-      "open": 4070.2,
-      "high": 4093.31,
-      "low": 4070.2,
-      "close": 4083.84
-    },
     {
       "time": 1785375000,
       "open": 4083.38,
@@ -1675,9 +1654,30 @@
     {
       "time": 1785972600,
       "open": 4262.02,
-      "high": 4277.16,
+      "high": 4282.29,
       "low": 4254.61,
-      "close": 4276.49
+      "close": 4277.96
+    },
+    {
+      "time": 1785974400,
+      "open": 4276.32,
+      "high": 4284.12,
+      "low": 4263.42,
+      "close": 4275.43
+    },
+    {
+      "time": 1785976200,
+      "open": 4277.14,
+      "high": 4299.15,
+      "low": 4272.87,
+      "close": 4295.87
+    },
+    {
+      "time": 1785978000,
+      "open": 4295.39,
+      "high": 4298.58,
+      "low": 4295.16,
+      "close": 4297.96
     }
   ],
   "drivers": [
@@ -1685,9 +1685,9 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 93.23,
-      "changePct": 0.02,
-      "dir": "flat",
+      "value": 93.31,
+      "changePct": -0.06,
+      "dir": "down",
       "proxy": "IEF inv",
       "showValue": false
     },
@@ -1695,8 +1695,8 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 28.11,
-      "changePct": -0.2,
+      "value": 28.09,
+      "changePct": -0.25,
       "dir": "down",
       "proxy": "UUP",
       "showValue": false
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 114.99,
-      "changePct": -0.68,
+      "value": 114.88,
+      "changePct": -0.78,
       "dir": "down",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-05T15:33:28Z"
+  "driversUpdated": "2026-08-06T01:02:51Z"
 }
