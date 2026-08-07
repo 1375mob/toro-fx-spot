@@ -1,25 +1,11 @@
 {
-  "spot": 4347.96,
-  "changePct": 2.53,
+  "spot": 4348.88,
+  "changePct": 2.55,
   "marketOpen": true,
-  "updated": "2026-08-07T14:38:22Z",
+  "updated": "2026-08-07T15:33:54Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1785510000,
-      "open": 4048.89,
-      "high": 4051.6,
-      "low": 4041.94,
-      "close": 4042.13
-    },
-    {
-      "time": 1785511800,
-      "open": 4042.37,
-      "high": 4046.45,
-      "low": 4037.63,
-      "close": 4045.72
-    },
     {
       "time": 1785513600,
       "open": 4045.58,
@@ -1676,8 +1662,22 @@
       "time": 1786113000,
       "open": 4351.02,
       "high": 4352.09,
-      "low": 4345.18,
-      "close": 4347.96
+      "low": 4339.76,
+      "close": 4342.52
+    },
+    {
+      "time": 1786114800,
+      "open": 4342.86,
+      "high": 4357.31,
+      "low": 4341.97,
+      "close": 4354.25
+    },
+    {
+      "time": 1786116600,
+      "open": 4355.49,
+      "high": 4355.49,
+      "low": 4348.39,
+      "close": 4348.88
     }
   ],
   "drivers": [
@@ -1685,9 +1685,9 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 92.95,
-      "changePct": 0.39,
-      "dir": "up",
+      "value": 93.12,
+      "changePct": -0.19,
+      "dir": "down",
       "proxy": "IEF inv",
       "showValue": false
     },
@@ -1695,9 +1695,9 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 28.19,
-      "changePct": 0.36,
-      "dir": "up",
+      "value": 28.07,
+      "changePct": -0.41,
+      "dir": "down",
       "proxy": "UUP",
       "showValue": false
     },
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 118.87,
-      "changePct": 3.47,
+      "value": 119.81,
+      "changePct": 0.79,
       "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-07T10:33:26Z"
+  "driversUpdated": "2026-08-07T15:33:54Z"
 }
