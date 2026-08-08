@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-08T04:04:08Z",
+  "updated": "2026-08-08T05:08:23Z",
   "eventDay": false,
   "readings": {
     "dxy_change_pct": -0.3661,
@@ -12,7 +12,7 @@
     "breakeven": 2.26,
     "be_delta_bps": 4.0,
     "tip_ief_change_pct": -0.0401,
-    "proxy_change": -0.2717
+    "proxy_change": 1.1515
   },
   "verdict": {
     "dxyPressure": "Bullish",
@@ -26,8 +26,8 @@
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
     "realProxyConfirmation": "REAL DIVERGES",
-    "inflationProxyRead": "Neutral",
-    "inflationState": "BE UP / PROXY FLAT",
+    "inflationProxyRead": "Inflation Up",
+    "inflationState": "INFL UP CONFIRMED",
     "r13": "BE-LED",
     "score": 6,
     "bias": "Strong Bullish Gold",
