@@ -1,18 +1,11 @@
 {
-  "spot": 4382.24,
-  "changePct": 0.92,
+  "spot": 4388.26,
+  "changePct": 1.06,
   "marketOpen": true,
-  "updated": "2026-08-10T19:07:33Z",
+  "updated": "2026-08-10T19:59:08Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1785785400,
-      "open": 4053.94,
-      "high": 4055.81,
-      "low": 4050.7,
-      "close": 4052.25
-    },
     {
       "time": 1785787200,
       "open": 4052.35,
@@ -1675,9 +1668,16 @@
     {
       "time": 1786388400,
       "open": 4378.87,
-      "high": 4382.66,
+      "high": 4390.63,
       "low": 4378.64,
-      "close": 4382.24
+      "close": 4390.43
+    },
+    {
+      "time": 1786390200,
+      "open": 4390.12,
+      "high": 4395.6,
+      "low": 4386.23,
+      "close": 4388.26
     }
   ],
   "drivers": [
