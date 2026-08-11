@@ -1,25 +1,11 @@
 {
-  "spot": 4398.02,
-  "changePct": 0.18,
+  "spot": 4412.33,
+  "changePct": 0.51,
   "marketOpen": true,
-  "updated": "2026-08-10T23:42:49Z",
+  "updated": "2026-08-11T00:34:33Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1785801600,
-      "open": 4053.14,
-      "high": 4069.34,
-      "low": 4053.14,
-      "close": 4060.98
-    },
-    {
-      "time": 1785803400,
-      "open": 4060.57,
-      "high": 4060.75,
-      "low": 4049.84,
-      "close": 4050.5
-    },
     {
       "time": 1785805200,
       "open": 4051.78,
@@ -1675,9 +1661,23 @@
     {
       "time": 1786404600,
       "open": 4395.3,
-      "high": 4398.9,
+      "high": 4402.32,
       "low": 4395.12,
-      "close": 4398.02
+      "close": 4402.08
+    },
+    {
+      "time": 1786406400,
+      "open": 4401.53,
+      "high": 4414.43,
+      "low": 4396.38,
+      "close": 4413.2
+    },
+    {
+      "time": 1786408200,
+      "open": 4413.39,
+      "high": 4415.01,
+      "low": 4412.25,
+      "close": 4412.33
     }
   ],
   "drivers": [
@@ -1685,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 92.78,
-      "changePct": 0.42,
+      "value": 92.76,
+      "changePct": 0.44,
       "dir": "up",
       "proxy": "IEF inv",
       "showValue": false
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 125.93,
-      "changePct": 6.74,
+      "value": 125.92,
+      "changePct": 6.73,
       "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-10T21:34:14Z"
+  "driversUpdated": "2026-08-11T00:34:33Z"
 }
