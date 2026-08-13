@@ -1,18 +1,18 @@
 {
-  "updated": "2026-08-13T15:38:51Z",
+  "updated": "2026-08-13T16:32:22Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.114,
-    "y10": 4.635,
-    "y10_delta_bps": -4.7,
+    "dxy_change_pct": -0.029,
+    "y10": 4.645,
+    "y10_delta_bps": -3.7,
     "y2": 4.22,
     "y2_delta_bps": -20.9,
     "real": 2.43,
     "real_delta_bps": 0.0,
     "breakeven": 2.27,
     "be_delta_bps": -2.0,
-    "tip_ief_change_pct": -0.1249,
-    "proxy_change": -0.8887
+    "tip_ief_change_pct": -0.1202,
+    "proxy_change": -1.1769
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -20,14 +20,14 @@
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 3.5,
+    "distanceToNominalBps": 4.5,
     "realRead": "Flat",
     "breakevenRead": "Inflation Down",
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
     "realProxyConfirmation": "REAL DIVERGES",
-    "inflationProxyRead": "Neutral",
-    "inflationState": "BE DOWN / PROXY FLAT",
+    "inflationProxyRead": "Inflation Down",
+    "inflationState": "INFL DOWN CONFIRMED",
     "r13": "BE-LED",
     "score": 3,
     "bias": "Moderate Bullish Gold",
@@ -41,12 +41,15 @@
       100.73,
       100.75,
       100.99,
+      101.18,
+      101.14,
       101.43,
       101.47,
       101.51,
       101.38,
       100.8,
       100.01,
+      99.8,
       99.96,
       99.89,
       99.69,
@@ -55,15 +58,24 @@
       99.81,
       99.82,
       100.01,
-      99.896
+      99.981
     ],
     "y10": [
+      4.609,
+      4.585,
+      4.545,
+      4.569,
+      4.541,
+      4.598,
+      4.628,
+      4.657,
       4.703,
       4.679,
       4.641,
       4.604,
       4.622,
       4.663,
+      4.745,
       4.686,
       4.627,
       4.617,
@@ -72,7 +84,7 @@
       4.699,
       4.684,
       4.682,
-      4.635
+      4.645
     ],
     "wti": [
       78.14,
@@ -98,7 +110,7 @@
       82.13,
       83.2,
       83.27,
-      82.53
+      82.29
     ],
     "y2": [
       4.14,
