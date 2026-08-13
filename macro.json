@@ -1,18 +1,18 @@
 {
-  "updated": "2026-08-13T14:43:42Z",
+  "updated": "2026-08-13T15:38:51Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.156,
-    "y10": 4.619,
-    "y10_delta_bps": -6.3,
+    "dxy_change_pct": -0.114,
+    "y10": 4.635,
+    "y10_delta_bps": -4.7,
     "y2": 4.22,
     "y2_delta_bps": -20.9,
     "real": 2.43,
     "real_delta_bps": 0.0,
     "breakeven": 2.27,
     "be_delta_bps": -2.0,
-    "tip_ief_change_pct": -0.1808,
-    "proxy_change": -2.7501
+    "tip_ief_change_pct": -0.1249,
+    "proxy_change": -0.8887
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -20,14 +20,14 @@
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 1.9,
+    "distanceToNominalBps": 3.5,
     "realRead": "Flat",
     "breakevenRead": "Inflation Down",
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
     "realProxyConfirmation": "REAL DIVERGES",
-    "inflationProxyRead": "Inflation Down",
-    "inflationState": "INFL DOWN CONFIRMED",
+    "inflationProxyRead": "Neutral",
+    "inflationState": "BE DOWN / PROXY FLAT",
     "r13": "BE-LED",
     "score": 3,
     "bias": "Moderate Bullish Gold",
@@ -55,7 +55,7 @@
       99.81,
       99.82,
       100.01,
-      99.854
+      99.896
     ],
     "y10": [
       4.703,
@@ -72,7 +72,7 @@
       4.699,
       4.684,
       4.682,
-      4.619
+      4.635
     ],
     "wti": [
       78.14,
@@ -98,7 +98,7 @@
       82.13,
       83.2,
       83.27,
-      80.98
+      82.53
     ],
     "y2": [
       4.14,
