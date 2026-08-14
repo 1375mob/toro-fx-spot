@@ -1,18 +1,18 @@
 {
-  "updated": "2026-08-14T19:54:26Z",
+  "updated": "2026-08-14T20:21:20Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.3031,
+    "dxy_change_pct": -0.3151,
     "y10": 4.696,
     "y10_delta_bps": 5.5,
-    "y2": 4.2,
+    "y2": 4.15,
     "y2_delta_bps": -20.9,
-    "real": 2.42,
-    "real_delta_bps": -1.0,
-    "breakeven": 2.26,
-    "be_delta_bps": -1.0,
-    "tip_ief_change_pct": 0.1384,
-    "proxy_change": 1.3292
+    "real": 2.39,
+    "real_delta_bps": -3.0,
+    "breakeven": 2.24,
+    "be_delta_bps": -2.0,
+    "tip_ief_change_pct": 0.1204,
+    "proxy_change": 1.4769
   },
   "verdict": {
     "dxyPressure": "Bullish",
@@ -58,7 +58,7 @@
       99.82,
       100.01,
       99.96,
-      99.657
+      99.645
     ],
     "y10": [
       4.585,
@@ -110,10 +110,9 @@
       83.2,
       83.27,
       81.25,
-      82.33
+      82.45
     ],
     "y2": [
-      4.17,
       4.14,
       4.13,
       4.19,
@@ -142,10 +141,10 @@
       4.19,
       4.25,
       4.22,
-      4.2
+      4.2,
+      4.15
     ],
     "real": [
-      2.25,
       2.26,
       2.24,
       2.3,
@@ -174,7 +173,8 @@
       2.4,
       2.43,
       2.43,
-      2.42
+      2.42,
+      2.39
     ],
     "breakeven": [
       2.23,
@@ -224,20 +224,20 @@
       "source": "FRED DGS2 level + 2YY=F delta",
       "live": true,
       "showValue": true,
-      "levelAsOf": "2026-08-12",
+      "levelAsOf": "2026-08-13",
       "note": "level is EOD cash, change is the yield future"
     },
     "real": {
       "source": "FRED DFII10",
       "live": false,
       "showValue": true,
-      "asOf": "2026-08-12"
+      "asOf": "2026-08-13"
     },
     "breakeven": {
       "source": "FRED T10YIE",
       "live": false,
       "showValue": true,
-      "asOf": "2026-08-12"
+      "asOf": "2026-08-13"
     },
     "realProxy": {
       "source": "Yahoo TIP/IEF",
@@ -252,8 +252,8 @@
     }
   },
   "window": {
-    "asOf": "2026-08-12",
-    "prior": "2026-08-11",
-    "decompositionDriftBps": 0.0
+    "asOf": "2026-08-13",
+    "prior": "2026-08-12",
+    "decompositionDriftBps": -0.0
   }
 }
