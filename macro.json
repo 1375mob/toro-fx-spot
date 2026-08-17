@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-17T19:38:48Z",
+  "updated": "2026-08-17T19:57:13Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.0893,
+    "dxy_change_pct": -0.0963,
     "y10": 4.724,
     "y10_delta_bps": 2.8,
     "y2": 4.15,
@@ -11,7 +11,7 @@
     "real_delta_bps": -3.0,
     "breakeven": 2.24,
     "be_delta_bps": -2.0,
-    "tip_ief_change_pct": -0.0125,
+    "tip_ief_change_pct": 0.0026,
     "proxy_change": 2.4636
   },
   "verdict": {
@@ -23,9 +23,9 @@
     "distanceToNominalBps": 12.4,
     "realRead": "Gold Tailwind",
     "breakevenRead": "Inflation Down",
-    "realProxyDirection": 1,
-    "realProxyText": "REAL UP",
-    "realProxyConfirmation": "REAL CONFIRMS",
+    "realProxyDirection": -1,
+    "realProxyText": "REAL DOWN",
+    "realProxyConfirmation": "REAL DIVERGES",
     "inflationProxyRead": "Inflation Up",
     "inflationState": "DIVERGENCE",
     "r13": "REAL-LED",
@@ -56,7 +56,7 @@
       100.01,
       99.96,
       99.67,
-      99.581
+      99.574
     ],
     "y10": [
       4.541,
