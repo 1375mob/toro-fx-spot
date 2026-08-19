@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-19T22:14:18Z",
+  "updated": "2026-08-19T22:41:50Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.8841,
+    "dxy_change_pct": -0.8851,
     "y10": 4.653,
     "y10_delta_bps": -5.3,
     "y2": 4.19,
@@ -12,7 +12,7 @@
     "breakeven": 2.3,
     "be_delta_bps": 2.0,
     "tip_ief_change_pct": -0.0262,
-    "proxy_change": -0.518
+    "proxy_change": -0.6828
   },
   "verdict": {
     "dxyPressure": "Bullish",
@@ -54,7 +54,7 @@
       99.67,
       99.64,
       99.65,
-      98.769
+      98.768
     ],
     "y10": [
       4.703,
@@ -100,7 +100,7 @@
       82.4,
       84.5,
       84.94,
-      84.5
+      84.36
     ],
     "y2": [
       4.21,
