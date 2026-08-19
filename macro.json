@@ -1,18 +1,18 @@
 {
-  "updated": "2026-08-19T09:48:47Z",
+  "updated": "2026-08-19T10:18:26Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.2479,
+    "dxy_change_pct": -0.2569,
     "y10": 4.706,
     "y10_delta_bps": -1.8,
     "y2": 4.19,
     "y2_delta_bps": -20.9,
-    "real": null,
-    "real_delta_bps": null,
-    "breakeven": null,
-    "be_delta_bps": null,
+    "real": 2.44,
+    "real_delta_bps": 3.0,
+    "breakeven": 2.28,
+    "be_delta_bps": 1.0,
     "tip_ief_change_pct": 0.1371,
-    "proxy_change": -0.2355
+    "proxy_change": -0.0471
   },
   "verdict": {
     "dxyPressure": "Bullish",
@@ -21,14 +21,14 @@
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
     "distanceToNominalBps": 10.6,
-    "realRead": "N/A",
-    "breakevenRead": "N/A",
+    "realRead": "Gold Headwind",
+    "breakevenRead": "Inflation Up",
     "realProxyDirection": -1,
     "realProxyText": "REAL DOWN",
     "realProxyConfirmation": "REAL CONFIRMS",
     "inflationProxyRead": "Neutral",
-    "inflationState": "N/A",
-    "r13": "N/A",
+    "inflationState": "BE UP / PROXY FLAT",
+    "r13": "REAL-LED",
     "score": 6,
     "bias": "Strong Bullish Gold",
     "tone": "bull"
@@ -36,15 +36,12 @@
   "spark": {
     "dxy": [
       100.99,
-      101.18,
-      101.14,
       101.43,
       101.47,
       101.51,
       101.38,
       100.8,
       100.01,
-      99.8,
       99.96,
       99.89,
       99.69,
@@ -57,19 +54,15 @@
       99.67,
       99.64,
       99.65,
-      99.403
+      99.394
     ],
     "y10": [
-      4.598,
-      4.628,
-      4.657,
       4.703,
       4.679,
       4.641,
       4.604,
       4.622,
       4.663,
-      4.745,
       4.686,
       4.627,
       4.617,
@@ -106,7 +99,7 @@
       82.4,
       84.5,
       84.94,
-      84.74
+      84.9
     ],
     "y2": [
       4.19,
@@ -172,7 +165,38 @@
       2.41,
       2.44
     ],
-    "breakeven": []
+    "breakeven": [
+      2.25,
+      2.23,
+      2.24,
+      2.26,
+      2.25,
+      2.23,
+      2.22,
+      2.24,
+      2.25,
+      2.26,
+      2.28,
+      2.28,
+      2.26,
+      2.21,
+      2.2,
+      2.26,
+      2.27,
+      2.28,
+      2.27,
+      2.23,
+      2.22,
+      2.26,
+      2.25,
+      2.29,
+      2.27,
+      2.26,
+      2.24,
+      2.27,
+      2.28,
+      2.3
+    ]
   },
   "provenance": {
     "y10": {
@@ -196,13 +220,13 @@
       "source": "FRED DFII10",
       "live": false,
       "showValue": true,
-      "asOf": null
+      "asOf": "2026-08-17"
     },
     "breakeven": {
       "source": "FRED T10YIE",
       "live": false,
       "showValue": true,
-      "asOf": null
+      "asOf": "2026-08-17"
     },
     "realProxy": {
       "source": "Yahoo TIP/IEF",
@@ -217,8 +241,8 @@
     }
   },
   "window": {
-    "asOf": null,
-    "prior": null,
-    "decompositionDriftBps": null
+    "asOf": "2026-08-17",
+    "prior": "2026-08-14",
+    "decompositionDriftBps": 0.0
   }
 }
