@@ -1,32 +1,11 @@
 {
-  "spot": 4354.52,
-  "changePct": 0.43,
+  "spot": 4354.96,
+  "changePct": 0.44,
   "marketOpen": true,
-  "updated": "2026-08-19T01:58:11Z",
+  "updated": "2026-08-19T03:02:34Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1786500000,
-      "open": 4395.36,
-      "high": 4403.73,
-      "low": 4394.83,
-      "close": 4402.48
-    },
-    {
-      "time": 1786501800,
-      "open": 4402.34,
-      "high": 4414.43,
-      "low": 4397.48,
-      "close": 4412.27
-    },
-    {
-      "time": 1786503600,
-      "open": 4412.2,
-      "high": 4415.01,
-      "low": 4405.56,
-      "close": 4407.44
-    },
     {
       "time": 1786505400,
       "open": 4407.28,
@@ -1677,7 +1656,28 @@
       "open": 4340.4,
       "high": 4356.42,
       "low": 4340.4,
-      "close": 4354.52
+      "close": 4355.14
+    },
+    {
+      "time": 1787104800,
+      "open": 4354.02,
+      "high": 4361.48,
+      "low": 4352.18,
+      "close": 4360.7
+    },
+    {
+      "time": 1787106600,
+      "open": 4360.48,
+      "high": 4362.7,
+      "low": 4352.56,
+      "close": 4354.86
+    },
+    {
+      "time": 1787108400,
+      "open": 4354.48,
+      "high": 4355.02,
+      "low": 4353.92,
+      "close": 4354.96
     }
   ],
   "drivers": [
@@ -1685,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 92.95,
-      "changePct": -0.12,
+      "value": 92.93,
+      "changePct": -0.1,
       "dir": "down",
       "proxy": "IEF inv",
       "showValue": false
@@ -1696,7 +1696,7 @@
       "label": "Dollar",
       "symbol": "UUP",
       "value": 28.14,
-      "changePct": 0.12,
+      "changePct": 0.14,
       "dir": "up",
       "proxy": "UUP",
       "showValue": false
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 130.68,
-      "changePct": 0.3,
+      "value": 130.66,
+      "changePct": 0.28,
       "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-18T21:31:37Z"
+  "driversUpdated": "2026-08-19T03:02:34Z"
 }
