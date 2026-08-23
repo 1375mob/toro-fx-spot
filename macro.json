@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-23T22:15:59Z",
+  "updated": "2026-08-23T22:44:02Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.0547,
+    "dxy_change_pct": 0.0496,
     "y10": 4.738,
     "y10_delta_bps": 4.2,
     "y2": 4.19,
@@ -12,7 +12,7 @@
     "breakeven": 2.34,
     "be_delta_bps": 4.0,
     "tip_ief_change_pct": -0.1695,
-    "proxy_change": 0.0
+    "proxy_change": -0.7696
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -57,7 +57,7 @@
       98.83,
       98.9,
       98.8,
-      98.854
+      98.849
     ],
     "y10": [
       4.628,
@@ -108,7 +108,7 @@
       85.83,
       87.83,
       87.06,
-      87.06
+      86.39
     ],
     "y2": [
       4.21,
