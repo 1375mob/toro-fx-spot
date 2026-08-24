@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T08:26:11Z",
+  "updated": "2026-08-24T09:11:19Z",
   "eventDay": false,
   "readings": {
     "dxy_change_pct": 0.1984,
@@ -12,7 +12,7 @@
     "breakeven": 2.34,
     "be_delta_bps": 4.0,
     "tip_ief_change_pct": -0.1695,
-    "proxy_change": -1.5851
+    "proxy_change": -2.4466
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -106,7 +106,7 @@
       85.83,
       87.83,
       87.06,
-      85.68
+      84.93
     ],
     "y2": [
       4.21,
