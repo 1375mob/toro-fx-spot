@@ -1,25 +1,11 @@
 {
-  "spot": 4669.46,
-  "changePct": 1.43,
+  "spot": 4656.52,
+  "changePct": 1.15,
   "marketOpen": true,
-  "updated": "2026-08-24T15:26:15Z",
+  "updated": "2026-08-24T16:04:29Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1786980600,
-      "open": 4424.64,
-      "high": 4427.33,
-      "low": 4418.21,
-      "close": 4426.83
-    },
-    {
-      "time": 1786982400,
-      "open": 4426.92,
-      "high": 4427.91,
-      "low": 4423.19,
-      "close": 4423.68
-    },
     {
       "time": 1786984200,
       "open": 4423.66,
@@ -1675,9 +1661,23 @@
     {
       "time": 1787583600,
       "open": 4673.54,
-      "high": 4676.61,
+      "high": 4677.49,
       "low": 4664.83,
-      "close": 4669.46
+      "close": 4673.17
+    },
+    {
+      "time": 1787585400,
+      "open": 4674.13,
+      "high": 4678.8,
+      "low": 4642.09,
+      "close": 4642.56
+    },
+    {
+      "time": 1787587200,
+      "open": 4642.62,
+      "high": 4657.51,
+      "low": 4642.62,
+      "close": 4656.52
     }
   ],
   "drivers": [
@@ -1685,9 +1685,9 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 92.82,
-      "changePct": 0.19,
-      "dir": "up",
+      "value": 93.13,
+      "changePct": -0.33,
+      "dir": "down",
       "proxy": "IEF inv",
       "showValue": false
     },
@@ -1695,9 +1695,9 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 27.9,
-      "changePct": -0.04,
-      "dir": "down",
+      "value": 27.95,
+      "changePct": 0.2,
+      "dir": "up",
       "proxy": "UUP",
       "showValue": false
     },
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 134.64,
-      "changePct": 0.07,
-      "dir": "up",
+      "value": 131.76,
+      "changePct": -2.14,
+      "dir": "down",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-24T12:01:14Z"
+  "driversUpdated": "2026-08-24T16:04:29Z"
 }
