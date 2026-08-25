@@ -1,8 +1,8 @@
 {
-  "spot": 4667.77,
-  "changePct": 0.2,
+  "spot": 4673.33,
+  "changePct": 0.32,
   "marketOpen": true,
-  "updated": "2026-08-25T22:38:08Z",
+  "updated": "2026-08-25T23:01:08Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
@@ -1675,9 +1675,9 @@
     {
       "time": 1787697000,
       "open": 4666.59,
-      "high": 4669.61,
+      "high": 4673.55,
       "low": 4666.52,
-      "close": 4667.77
+      "close": 4673.33
     }
   ],
   "drivers": [
@@ -1685,7 +1685,7 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 93.52,
+      "value": 93.51,
       "changePct": -0.54,
       "dir": "down",
       "proxy": "IEF inv",
@@ -1712,5 +1712,5 @@
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-25T22:02:36Z"
+  "driversUpdated": "2026-08-25T23:01:08Z"
 }
