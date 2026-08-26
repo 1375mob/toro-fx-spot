@@ -1,18 +1,18 @@
 {
-  "updated": "2026-08-26T07:31:46Z",
+  "updated": "2026-08-26T08:22:04Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.0435,
+    "dxy_change_pct": 0.0182,
     "y10": 4.639,
     "y10_delta_bps": -6.5,
-    "y2": null,
+    "y2": 4.24,
     "y2_delta_bps": -20.9,
     "real": 2.38,
     "real_delta_bps": -2.0,
     "breakeven": 2.32,
     "be_delta_bps": -2.0,
     "tip_ief_change_pct": -0.173,
-    "proxy_change": -2.5862
+    "proxy_change": -2.6226
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -57,7 +57,7 @@
       98.8,
       99.0,
       98.92,
-      98.963
+      98.938
     ],
     "y10": [
       4.641,
@@ -106,9 +106,40 @@
       87.06,
       85.01,
       82.36,
-      80.23
+      80.2
     ],
-    "y2": [],
+    "y2": [
+      4.18,
+      4.13,
+      4.16,
+      4.18,
+      4.21,
+      4.26,
+      4.31,
+      4.37,
+      4.33,
+      4.31,
+      4.26,
+      4.22,
+      4.23,
+      4.28,
+      4.25,
+      4.2,
+      4.18,
+      4.25,
+      4.19,
+      4.25,
+      4.22,
+      4.2,
+      4.15,
+      4.17,
+      4.19,
+      4.19,
+      4.19,
+      4.19,
+      4.24,
+      4.24
+    ],
     "real": [
       2.33,
       2.32,
@@ -189,7 +220,7 @@
       "source": "FRED DGS2 level + 2YY=F delta",
       "live": true,
       "showValue": true,
-      "levelAsOf": null,
+      "levelAsOf": "2026-08-24",
       "note": "level is EOD cash, change is the yield future"
     },
     "real": {
