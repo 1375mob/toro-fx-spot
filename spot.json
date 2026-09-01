@@ -1,81 +1,11 @@
 {
-  "spot": 4457.45,
-  "changePct": 0.19,
+  "spot": 4427.67,
+  "changePct": -0.48,
   "marketOpen": true,
-  "updated": "2026-09-01T00:27:37Z",
+  "updated": "2026-09-01T05:30:21Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1787617800,
-      "open": 4679.11,
-      "high": 4695.94,
-      "low": 4679.11,
-      "close": 4689.7
-    },
-    {
-      "time": 1787619600,
-      "open": 4688.81,
-      "high": 4688.81,
-      "low": 4661.95,
-      "close": 4672.81
-    },
-    {
-      "time": 1787621400,
-      "open": 4671.4,
-      "high": 4679.13,
-      "low": 4657.81,
-      "close": 4659.05
-    },
-    {
-      "time": 1787623200,
-      "open": 4661.47,
-      "high": 4661.47,
-      "low": 4639.29,
-      "close": 4656.55
-    },
-    {
-      "time": 1787625000,
-      "open": 4656.32,
-      "high": 4660.17,
-      "low": 4622.14,
-      "close": 4622.62
-    },
-    {
-      "time": 1787626800,
-      "open": 4623.14,
-      "high": 4639.31,
-      "low": 4619.8,
-      "close": 4637.03
-    },
-    {
-      "time": 1787628600,
-      "open": 4637.42,
-      "high": 4641.48,
-      "low": 4631.06,
-      "close": 4632.77
-    },
-    {
-      "time": 1787630400,
-      "open": 4633.39,
-      "high": 4637.79,
-      "low": 4629.63,
-      "close": 4629.95
-    },
-    {
-      "time": 1787632200,
-      "open": 4630.1,
-      "high": 4632.36,
-      "low": 4624.92,
-      "close": 4626.1
-    },
-    {
-      "time": 1787634000,
-      "open": 4626.19,
-      "high": 4646.84,
-      "low": 4625.24,
-      "close": 4646.67
-    },
     {
       "time": 1787635800,
       "open": 4646.27,
@@ -1677,7 +1607,77 @@
       "open": 4451.12,
       "high": 4462.06,
       "low": 4448.0,
-      "close": 4457.45
+      "close": 4460.92
+    },
+    {
+      "time": 1788222600,
+      "open": 4460.55,
+      "high": 4461.04,
+      "low": 4452.16,
+      "close": 4453.58
+    },
+    {
+      "time": 1788224400,
+      "open": 4453.99,
+      "high": 4455.93,
+      "low": 4438.33,
+      "close": 4440.52
+    },
+    {
+      "time": 1788226200,
+      "open": 4440.19,
+      "high": 4446.42,
+      "low": 4436.12,
+      "close": 4442.72
+    },
+    {
+      "time": 1788228000,
+      "open": 4442.57,
+      "high": 4449.19,
+      "low": 4440.69,
+      "close": 4441.93
+    },
+    {
+      "time": 1788229800,
+      "open": 4441.82,
+      "high": 4442.02,
+      "low": 4428.5,
+      "close": 4441.83
+    },
+    {
+      "time": 1788231600,
+      "open": 4441.46,
+      "high": 4443.46,
+      "low": 4430.12,
+      "close": 4436.46
+    },
+    {
+      "time": 1788233400,
+      "open": 4435.91,
+      "high": 4443.46,
+      "low": 4433.8,
+      "close": 4437.65
+    },
+    {
+      "time": 1788235200,
+      "open": 4438.25,
+      "high": 4438.25,
+      "low": 4429.77,
+      "close": 4430.67
+    },
+    {
+      "time": 1788237000,
+      "open": 4430.87,
+      "high": 4430.87,
+      "low": 4425.65,
+      "close": 4427.15
+    },
+    {
+      "time": 1788238800,
+      "open": 4427.34,
+      "high": 4433.1,
+      "low": 4425.76,
+      "close": 4427.67
     }
   ],
   "drivers": [
@@ -1685,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 92.85,
-      "changePct": 0.41,
+      "value": 92.74,
+      "changePct": 0.12,
       "dir": "up",
       "proxy": "IEF inv",
       "showValue": false
@@ -1695,9 +1695,9 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 28.18,
-      "changePct": 0.57,
-      "dir": "up",
+      "value": 28.12,
+      "changePct": -0.21,
+      "dir": "down",
       "proxy": "UUP",
       "showValue": false
     },
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 129.7,
-      "changePct": -0.24,
-      "dir": "down",
+      "value": 133.7,
+      "changePct": 3.08,
+      "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-08-30T10:31:49Z"
+  "driversUpdated": "2026-09-01T05:30:21Z"
 }
