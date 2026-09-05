@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04T23:01:52Z",
+  "updated": "2026-09-05T00:54:58Z",
   "eventDay": false,
   "readings": {
     "dxy_change_pct": 0.1586,
@@ -11,7 +11,7 @@
     "real_delta_bps": -3.0,
     "breakeven": 2.35,
     "be_delta_bps": 1.0,
-    "tip_ief_change_pct": 0.0045,
+    "tip_ief_change_pct": 0.027,
     "proxy_change": -0.0876
   },
   "verdict": {
