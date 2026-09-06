@@ -1,8 +1,8 @@
 {
-  "spot": 4429.05,
-  "changePct": 0.0,
+  "spot": 4429.02,
+  "changePct": -0.0,
   "marketOpen": true,
-  "updated": "2026-09-05T23:15:50Z",
+  "updated": "2026-09-06T01:02:57Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
@@ -1712,5 +1712,5 @@
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-09-05T19:30:03Z"
+  "driversUpdated": "2026-09-06T01:02:57Z"
 }
