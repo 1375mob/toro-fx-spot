@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-07T19:17:33Z",
+  "updated": "2026-09-07T22:08:16Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.2441,
+    "dxy_change_pct": 0.0161,
     "y10": 4.784,
     "y10_delta_bps": 2.2,
     "y2": 4.34,
@@ -15,7 +15,7 @@
     "proxy_change": -0.0
   },
   "verdict": {
-    "dxyPressure": "Bullish",
+    "dxyPressure": "Neutral",
     "y2Pressure": "Strong Bullish",
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
@@ -29,8 +29,8 @@
     "inflationProxyRead": "Neutral",
     "inflationState": "BE UP / PROXY FLAT",
     "r13": "REAL-LED",
-    "score": 6,
-    "bias": "Strong Bullish Gold",
+    "score": 3,
+    "bias": "Moderate Bullish Gold",
     "tone": "bull"
   },
   "spark": {
@@ -56,7 +56,7 @@
       99.56,
       99.0,
       99.16,
-      98.918
+      99.176
     ],
     "y10": [
       4.627,
