@@ -1,36 +1,36 @@
 {
-  "updated": "2026-09-08T09:14:21Z",
+  "updated": "2026-09-08T13:38:48Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.1694,
-    "y10": 4.784,
-    "y10_delta_bps": 2.2,
+    "dxy_change_pct": -0.3318,
+    "y10": 4.772,
+    "y10_delta_bps": -1.2,
     "y2": 4.34,
     "y2_delta_bps": -23.9,
     "real": 2.42,
     "real_delta_bps": -3.0,
     "breakeven": 2.35,
     "be_delta_bps": 1.0,
-    "tip_ief_change_pct": 0.0045,
-    "proxy_change": 3.0936
+    "tip_ief_change_pct": 0.0933,
+    "proxy_change": 1.6725
   },
   "verdict": {
-    "dxyPressure": "Neutral",
+    "dxyPressure": "Bullish",
     "y2Pressure": "Strong Bullish",
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 18.4,
+    "distanceToNominalBps": 17.2,
     "realRead": "Gold Tailwind",
     "breakevenRead": "Inflation Up",
     "realProxyDirection": -1,
     "realProxyText": "REAL DOWN",
-    "realProxyConfirmation": "REAL DIVERGES",
+    "realProxyConfirmation": "REAL CONFIRMS",
     "inflationProxyRead": "Inflation Up",
     "inflationState": "INFL UP CONFIRMED",
     "r13": "REAL-LED",
-    "score": 3,
-    "bias": "Moderate Bullish Gold",
+    "score": 6,
+    "bias": "Strong Bullish Gold",
     "tone": "bull"
   },
   "spark": {
@@ -55,13 +55,9 @@
       99.56,
       99.0,
       99.16,
-      98.992
+      98.831
     ],
     "y10": [
-      4.627,
-      4.617,
-      4.67,
-      4.66,
       4.699,
       4.684,
       4.682,
@@ -81,7 +77,8 @@
       4.796,
       4.796,
       4.762,
-      4.784
+      4.784,
+      4.772
     ],
     "wti": [
       82.13,
@@ -104,7 +101,7 @@
       91.01,
       91.3,
       91.48,
-      94.31
+      93.01
     ],
     "y2": [
       4.33,
