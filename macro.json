@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-08T00:21:12Z",
+  "updated": "2026-09-08T04:55:06Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.0161,
+    "dxy_change_pct": -0.3298,
     "y10": 4.784,
     "y10_delta_bps": 2.2,
     "y2": 4.34,
@@ -12,10 +12,10 @@
     "breakeven": 2.35,
     "be_delta_bps": 1.0,
     "tip_ief_change_pct": 0.0045,
-    "proxy_change": 1.0713
+    "proxy_change": 1.7271
   },
   "verdict": {
-    "dxyPressure": "Neutral",
+    "dxyPressure": "Bullish",
     "y2Pressure": "Strong Bullish",
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
@@ -29,13 +29,12 @@
     "inflationProxyRead": "Inflation Up",
     "inflationState": "INFL UP CONFIRMED",
     "r13": "REAL-LED",
-    "score": 3,
-    "bias": "Moderate Bullish Gold",
+    "score": 6,
+    "bias": "Strong Bullish Gold",
     "tone": "bull"
   },
   "spark": {
     "dxy": [
-      99.6,
       99.81,
       99.82,
       100.01,
@@ -56,7 +55,7 @@
       99.56,
       99.0,
       99.16,
-      99.176
+      98.833
     ],
     "y10": [
       4.627,
@@ -85,7 +84,6 @@
       4.784
     ],
     "wti": [
-      78.18,
       82.13,
       83.2,
       83.27,
@@ -106,7 +104,7 @@
       91.01,
       91.3,
       91.48,
-      92.46
+      93.06
     ],
     "y2": [
       4.33,
