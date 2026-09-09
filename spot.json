@@ -1,39 +1,11 @@
 {
-  "spot": 4354.95,
-  "changePct": -0.02,
+  "spot": 4346.93,
+  "changePct": -0.21,
   "marketOpen": true,
-  "updated": "2026-09-08T22:35:20Z",
+  "updated": "2026-09-09T00:33:27Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1788303600,
-      "open": 4329.72,
-      "high": 4332.31,
-      "low": 4325.42,
-      "close": 4329.51
-    },
-    {
-      "time": 1788305400,
-      "open": 4329.41,
-      "high": 4335.2,
-      "low": 4326.51,
-      "close": 4327.8
-    },
-    {
-      "time": 1788307200,
-      "open": 4328.14,
-      "high": 4333.99,
-      "low": 4319.28,
-      "close": 4324.54
-    },
-    {
-      "time": 1788309000,
-      "open": 4324.69,
-      "high": 4330.88,
-      "low": 4314.81,
-      "close": 4319.93
-    },
     {
       "time": 1788310800,
       "open": 4319.58,
@@ -1676,8 +1648,36 @@
       "time": 1788906600,
       "open": 4354.85,
       "high": 4355.78,
-      "low": 4354.45,
-      "close": 4354.95
+      "low": 4351.04,
+      "close": 4352.54
+    },
+    {
+      "time": 1788908400,
+      "open": 4352.97,
+      "high": 4357.53,
+      "low": 4351.81,
+      "close": 4357.28
+    },
+    {
+      "time": 1788910200,
+      "open": 4356.7,
+      "high": 4360.15,
+      "low": 4349.98,
+      "close": 4350.2
+    },
+    {
+      "time": 1788912000,
+      "open": 4350.63,
+      "high": 4352.37,
+      "low": 4341.97,
+      "close": 4346.26
+    },
+    {
+      "time": 1788913800,
+      "open": 4344.3,
+      "high": 4348.2,
+      "low": 4344.3,
+      "close": 4346.93
     }
   ],
   "drivers": [
@@ -1685,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 92.17,
-      "changePct": 0.09,
+      "value": 92.16,
+      "changePct": 0.1,
       "dir": "up",
       "proxy": "IEF inv",
       "showValue": false
@@ -1695,8 +1695,8 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 27.98,
-      "changePct": -0.34,
+      "value": 27.99,
+      "changePct": -0.32,
       "dir": "down",
       "proxy": "UUP",
       "showValue": false
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 146.01,
-      "changePct": 2.85,
+      "value": 146.03,
+      "changePct": 2.87,
       "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-09-08T20:04:39Z"
+  "driversUpdated": "2026-09-09T00:33:27Z"
 }
