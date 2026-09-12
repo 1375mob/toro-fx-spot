@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T23:41:05Z",
+  "updated": "2026-09-12T01:32:52Z",
   "eventDay": false,
   "readings": {
     "dxy_change_pct": 0.005,
@@ -11,7 +11,7 @@
     "real_delta_bps": 9.0,
     "breakeven": 2.4,
     "be_delta_bps": 3.0,
-    "tip_ief_change_pct": -0.2749,
+    "tip_ief_change_pct": 0.0702,
     "proxy_change": -2.4297
   },
   "verdict": {
@@ -23,9 +23,9 @@
     "distanceToNominalBps": 37.5,
     "realRead": "Gold Headwind",
     "breakevenRead": "Inflation Up",
-    "realProxyDirection": 1,
-    "realProxyText": "REAL UP",
-    "realProxyConfirmation": "REAL CONFIRMS",
+    "realProxyDirection": -1,
+    "realProxyText": "REAL DOWN",
+    "realProxyConfirmation": "REAL DIVERGES",
     "inflationProxyRead": "Inflation Down",
     "inflationState": "DIVERGENCE",
     "r13": "REAL-LED",
