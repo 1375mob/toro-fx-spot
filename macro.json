@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-14T00:31:38Z",
+  "updated": "2026-09-14T05:25:46Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.0182,
+    "dxy_change_pct": 0.229,
     "y10": 4.975,
     "y10_delta_bps": 3.1,
     "y2": 4.56,
@@ -15,7 +15,7 @@
     "proxy_change": 2.5487
   },
   "verdict": {
-    "dxyPressure": "Neutral",
+    "dxyPressure": "Bearish",
     "y2Pressure": "Neutral",
     "rateComplexPressure": "Neutral",
     "nominalRegime": "> 4.60",
@@ -29,13 +29,12 @@
     "inflationProxyRead": "Inflation Up",
     "inflationState": "INFL UP CONFIRMED",
     "r13": "REAL-LED",
-    "score": 0,
-    "bias": "Mixed",
-    "tone": "flat"
+    "score": -3,
+    "bias": "Moderate Bearish Gold",
+    "tone": "bear"
   },
   "spark": {
     "dxy": [
-      99.96,
       99.67,
       99.64,
       99.65,
@@ -56,7 +55,7 @@
       98.77,
       99.09,
       99.12,
-      99.138
+      99.347
     ],
     "y10": [
       4.684,
@@ -84,7 +83,6 @@
       4.975
     ],
     "wti": [
-      81.25,
       82.4,
       84.5,
       84.94,
