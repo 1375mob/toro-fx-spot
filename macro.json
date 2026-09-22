@@ -1,18 +1,18 @@
 {
-  "updated": "2026-09-22T11:32:09Z",
+  "updated": "2026-09-22T15:40:51Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.011,
-    "y10": 4.963,
-    "y10_delta_bps": -3.5,
+    "dxy_change_pct": 0.1762,
+    "y10": 4.961,
+    "y10_delta_bps": -0.2,
     "y2": 4.76,
     "y2_delta_bps": -1.2,
     "real": 2.68,
     "real_delta_bps": 7.0,
     "breakeven": 2.33,
     "be_delta_bps": 0.0,
-    "tip_ief_change_pct": 0.004,
-    "proxy_change": -5.5335
+    "tip_ief_change_pct": -0.0095,
+    "proxy_change": -4.4895
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -20,12 +20,12 @@
     "rateComplexPressure": "Neutral",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 36.3,
+    "distanceToNominalBps": 36.1,
     "realRead": "Gold Headwind",
     "breakevenRead": "Flat",
-    "realProxyDirection": -1,
-    "realProxyText": "REAL DOWN",
-    "realProxyConfirmation": "REAL CONFIRMS",
+    "realProxyDirection": 1,
+    "realProxyText": "REAL UP",
+    "realProxyConfirmation": "REAL DIVERGES",
     "inflationProxyRead": "Inflation Down",
     "inflationState": "LIVE PROXY DOWN",
     "r13": "REAL-LED",
@@ -55,10 +55,9 @@
       100.22,
       100.22,
       100.43,
-      100.419
+      100.607
     ],
     "y10": [
-      4.738,
       4.704,
       4.639,
       4.664,
@@ -78,7 +77,8 @@
       5.006,
       4.947,
       4.998,
-      4.963
+      4.963,
+      4.961
     ],
     "wti": [
       85.01,
@@ -101,7 +101,7 @@
       101.91,
       100.3,
       95.78,
-      90.48
+      91.48
     ],
     "y2": [
       4.19,
