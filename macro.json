@@ -1,23 +1,23 @@
 {
-  "updated": "2026-09-28T01:27:53Z",
+  "updated": "2026-09-28T07:18:21Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.2518,
+    "dxy_change_pct": 0.203,
     "y10": 5.184,
     "y10_delta_bps": 2.2,
     "y2": 4.87,
-    "y2_delta_bps": 2.8,
+    "y2_delta_bps": -5.0,
     "real": 2.85,
     "real_delta_bps": 9.0,
     "breakeven": 2.33,
     "be_delta_bps": -2.0,
     "tip_ief_change_pct": -0.1151,
-    "proxy_change": 0.8549
+    "proxy_change": 1.6665
   },
   "verdict": {
-    "dxyPressure": "Bullish",
-    "y2Pressure": "Neutral",
-    "rateComplexPressure": "Neutral",
+    "dxyPressure": "Bearish",
+    "y2Pressure": "Bullish",
+    "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
     "distanceToNominalBps": 58.4,
@@ -26,16 +26,15 @@
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
     "realProxyConfirmation": "REAL CONFIRMS",
-    "inflationProxyRead": "Neutral",
-    "inflationState": "BE DOWN / PROXY FLAT",
+    "inflationProxyRead": "Inflation Up",
+    "inflationState": "DIVERGENCE",
     "r13": "REAL-LED",
-    "score": 3,
-    "bias": "Moderate Bullish Gold",
-    "tone": "bull"
+    "score": 0,
+    "bias": "Mixed",
+    "tone": "flat"
   },
   "spark": {
     "dxy": [
-      99.16,
       99.7,
       99.43,
       99.67,
@@ -55,7 +54,8 @@
       100.6,
       101.1,
       101.29,
-      100.97
+      100.97,
+      101.175
     ],
     "y10": [
       4.639,
@@ -83,7 +83,6 @@
       5.184
     ],
     "wti": [
-      83.53,
       83.4,
       85.76,
       90.22,
@@ -104,7 +103,7 @@
       92.16,
       94.61,
       92.41,
-      93.2
+      93.95
     ],
     "y2": [
       4.15,
