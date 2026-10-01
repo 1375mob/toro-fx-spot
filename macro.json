@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-01T15:48:54Z",
+  "updated": "2026-10-01T20:40:05Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.5293,
-    "y10": 5.264,
-    "y10_delta_bps": -2.9,
-    "y2": 4.89,
+    "dxy_change_pct": 0.5589,
+    "y10": 5.237,
+    "y10_delta_bps": -5.6,
+    "y2": 4.88,
     "y2_delta_bps": -12.6,
-    "real": 2.91,
-    "real_delta_bps": 1.0,
-    "breakeven": 2.35,
+    "real": 2.93,
+    "real_delta_bps": 2.0,
+    "breakeven": 2.36,
     "be_delta_bps": 1.0,
-    "tip_ief_change_pct": 0.343,
-    "proxy_change": 2.2451
+    "tip_ief_change_pct": 0.2707,
+    "proxy_change": 2.7206
   },
   "verdict": {
     "dxyPressure": "Bearish",
@@ -20,7 +20,7 @@
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 66.4,
+    "distanceToNominalBps": 63.7,
     "realRead": "Gold Headwind",
     "breakevenRead": "Inflation Up",
     "realProxyDirection": -1,
@@ -56,7 +56,7 @@
       101.2,
       101.37,
       101.45,
-      101.987
+      102.017
     ],
     "y10": [
       4.796,
@@ -80,7 +80,7 @@
       5.24,
       5.255,
       5.293,
-      5.264
+      5.237
     ],
     "wti": [
       90.22,
@@ -104,10 +104,9 @@
       92.6,
       89.38,
       90.42,
-      92.45
+      92.88
     ],
     "y2": [
-      4.19,
       4.19,
       4.19,
       4.24,
@@ -136,10 +135,10 @@
       4.87,
       4.81,
       4.92,
-      4.89
+      4.89,
+      4.88
     ],
     "real": [
-      2.41,
       2.35,
       2.35,
       2.4,
@@ -168,7 +167,8 @@
       2.85,
       2.83,
       2.9,
-      2.91
+      2.91,
+      2.93
     ],
     "breakeven": [
       2.3,
@@ -218,20 +218,20 @@
       "source": "FRED DGS2 level + 2YY=F delta",
       "live": true,
       "showValue": true,
-      "levelAsOf": "2026-09-29",
+      "levelAsOf": "2026-09-30",
       "note": "level is EOD cash, change is the yield future"
     },
     "real": {
       "source": "FRED DFII10",
       "live": false,
       "showValue": true,
-      "asOf": "2026-09-29"
+      "asOf": "2026-09-30"
     },
     "breakeven": {
       "source": "FRED T10YIE",
       "live": false,
       "showValue": true,
-      "asOf": "2026-09-29"
+      "asOf": "2026-09-30"
     },
     "realProxy": {
       "source": "Yahoo TIP/IEF",
@@ -246,8 +246,8 @@
     }
   },
   "window": {
-    "asOf": "2026-09-29",
-    "prior": "2026-09-28",
-    "decompositionDriftBps": -0.0
+    "asOf": "2026-09-30",
+    "prior": "2026-09-29",
+    "decompositionDriftBps": 0.0
   }
 }
