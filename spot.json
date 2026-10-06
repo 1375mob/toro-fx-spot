@@ -1,81 +1,11 @@
 {
-  "spot": 4163.51,
-  "changePct": 0.54,
+  "spot": 4162.87,
+  "changePct": -0.16,
   "marketOpen": true,
-  "updated": "2026-10-06T15:28:46Z",
+  "updated": "2026-10-06T20:30:00Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1790695800,
-      "open": 4151.18,
-      "high": 4159.56,
-      "low": 4147.65,
-      "close": 4158.52
-    },
-    {
-      "time": 1790697600,
-      "open": 4157.94,
-      "high": 4157.94,
-      "low": 4150.3,
-      "close": 4153.91
-    },
-    {
-      "time": 1790699400,
-      "open": 4153.76,
-      "high": 4154.92,
-      "low": 4144.46,
-      "close": 4144.66
-    },
-    {
-      "time": 1790701200,
-      "open": 4145.12,
-      "high": 4148.37,
-      "low": 4144.48,
-      "close": 4147.17
-    },
-    {
-      "time": 1790703000,
-      "open": 4147.26,
-      "high": 4148.86,
-      "low": 4142.62,
-      "close": 4143.0
-    },
-    {
-      "time": 1790704800,
-      "open": 4142.97,
-      "high": 4169.62,
-      "low": 4142.2,
-      "close": 4167.08
-    },
-    {
-      "time": 1790706600,
-      "open": 4166.08,
-      "high": 4175.89,
-      "low": 4162.33,
-      "close": 4170.93
-    },
-    {
-      "time": 1790708400,
-      "open": 4170.19,
-      "high": 4172.48,
-      "low": 4168.0,
-      "close": 4170.65
-    },
-    {
-      "time": 1790710200,
-      "open": 4170.2,
-      "high": 4175.77,
-      "low": 4170.2,
-      "close": 4173.54
-    },
-    {
-      "time": 1790712000,
-      "open": 4173.61,
-      "high": 4177.98,
-      "low": 4171.53,
-      "close": 4173.6
-    },
     {
       "time": 1790713800,
       "open": 4174.44,
@@ -1675,9 +1605,79 @@
     {
       "time": 1791298800,
       "open": 4154.25,
-      "high": 4164.64,
+      "high": 4164.85,
       "low": 4154.25,
-      "close": 4163.51
+      "close": 4164.72
+    },
+    {
+      "time": 1791300600,
+      "open": 4164.48,
+      "high": 4169.78,
+      "low": 4161.55,
+      "close": 4164.84
+    },
+    {
+      "time": 1791302400,
+      "open": 4164.99,
+      "high": 4165.8,
+      "low": 4160.77,
+      "close": 4160.93
+    },
+    {
+      "time": 1791304200,
+      "open": 4161.18,
+      "high": 4161.98,
+      "low": 4154.55,
+      "close": 4156.23
+    },
+    {
+      "time": 1791306000,
+      "open": 4155.84,
+      "high": 4165.11,
+      "low": 4155.84,
+      "close": 4160.04
+    },
+    {
+      "time": 1791307800,
+      "open": 4159.95,
+      "high": 4166.67,
+      "low": 4159.4,
+      "close": 4165.53
+    },
+    {
+      "time": 1791309600,
+      "open": 4165.33,
+      "high": 4173.1,
+      "low": 4164.58,
+      "close": 4168.92
+    },
+    {
+      "time": 1791311400,
+      "open": 4169.18,
+      "high": 4176.59,
+      "low": 4167.05,
+      "close": 4176.54
+    },
+    {
+      "time": 1791313200,
+      "open": 4176.41,
+      "high": 4183.93,
+      "low": 4172.38,
+      "close": 4172.66
+    },
+    {
+      "time": 1791315000,
+      "open": 4173.21,
+      "high": 4173.21,
+      "low": 4167.19,
+      "close": 4169.39
+    },
+    {
+      "time": 1791316800,
+      "open": 4169.14,
+      "high": 4169.82,
+      "low": 4162.5,
+      "close": 4162.87
     }
   ],
   "drivers": [
@@ -1685,9 +1685,9 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 89.05,
-      "changePct": 0.28,
-      "dir": "up",
+      "value": 89.12,
+      "changePct": -0.23,
+      "dir": "down",
       "proxy": "IEF inv",
       "showValue": false
     },
@@ -1695,8 +1695,8 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 28.89,
-      "changePct": -0.24,
+      "value": 28.91,
+      "changePct": -0.29,
       "dir": "down",
       "proxy": "UUP",
       "showValue": false
@@ -1705,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 147.37,
-      "changePct": -1.77,
-      "dir": "down",
+      "value": 144.9,
+      "changePct": 0.63,
+      "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-10-04T22:00:15Z"
+  "driversUpdated": "2026-10-06T20:30:00Z"
 }
