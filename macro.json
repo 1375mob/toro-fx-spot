@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-15T18:18:52Z",
+  "updated": "2026-10-15T21:33:49Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.5363,
-    "y10": 5.087,
-    "y10_delta_bps": -10.3,
-    "y2": 4.79,
+    "dxy_change_pct": -0.5256,
+    "y10": 5.089,
+    "y10_delta_bps": -10.1,
+    "y2": 4.82,
     "y2_delta_bps": 0.0,
-    "real": 2.88,
-    "real_delta_bps": -3.0,
-    "breakeven": 2.33,
-    "be_delta_bps": 0.0,
-    "tip_ief_change_pct": -0.2009,
-    "proxy_change": 1.7142
+    "real": 2.84,
+    "real_delta_bps": -4.0,
+    "breakeven": 2.35,
+    "be_delta_bps": 2.0,
+    "tip_ief_change_pct": -0.2631,
+    "proxy_change": 1.0832
   },
   "verdict": {
     "dxyPressure": "Bullish",
@@ -20,14 +20,14 @@
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 48.7,
+    "distanceToNominalBps": 48.9,
     "realRead": "Gold Tailwind",
-    "breakevenRead": "Flat",
+    "breakevenRead": "Inflation Up",
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
     "realProxyConfirmation": "REAL DIVERGES",
     "inflationProxyRead": "Inflation Up",
-    "inflationState": "LIVE PROXY UP",
+    "inflationState": "INFL UP CONFIRMED",
     "r13": "REAL-LED",
     "score": 6,
     "bias": "Strong Bullish Gold",
@@ -57,7 +57,7 @@
       102.58,
       102.18,
       102.55,
-      102.0
+      102.011
     ],
     "y10": [
       4.996,
@@ -82,7 +82,7 @@
       5.24,
       5.217,
       5.19,
-      5.087
+      5.089
     ],
     "wti": [
       105.83,
@@ -107,10 +107,9 @@
       93.74,
       94.14,
       95.09,
-      96.72
+      96.12
     ],
     "y2": [
-      4.34,
       4.39,
       4.39,
       4.34,
@@ -139,10 +138,10 @@
       4.77,
       4.75,
       4.8,
-      4.79
+      4.79,
+      4.82
     ],
     "real": [
-      2.44,
       2.44,
       2.45,
       2.42,
@@ -171,10 +170,10 @@
       2.92,
       2.87,
       2.91,
-      2.88
+      2.88,
+      2.84
     ],
     "breakeven": [
-      2.35,
       2.34,
       2.35,
       2.35,
@@ -203,7 +202,8 @@
       2.35,
       2.33,
       2.33,
-      2.35
+      2.35,
+      2.32
     ]
   },
   "provenance": {
@@ -221,20 +221,20 @@
       "source": "FRED DGS2 level + 2YY=F delta",
       "live": true,
       "showValue": true,
-      "levelAsOf": "2026-10-13",
+      "levelAsOf": "2026-10-14",
       "note": "level is EOD cash, change is the yield future"
     },
     "real": {
       "source": "FRED DFII10",
       "live": false,
       "showValue": true,
-      "asOf": "2026-10-13"
+      "asOf": "2026-10-14"
     },
     "breakeven": {
       "source": "FRED T10YIE",
       "live": false,
       "showValue": true,
-      "asOf": "2026-10-13"
+      "asOf": "2026-10-14"
     },
     "realProxy": {
       "source": "Yahoo TIP/IEF",
@@ -249,8 +249,8 @@
     }
   },
   "window": {
-    "asOf": "2026-10-13",
-    "prior": "2026-10-09",
+    "asOf": "2026-10-14",
+    "prior": "2026-10-13",
     "decompositionDriftBps": 0.0
   }
 }
