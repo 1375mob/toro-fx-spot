@@ -1,26 +1,26 @@
 {
-  "updated": "2026-10-28T14:12:24Z",
+  "updated": "2026-10-28T19:32:39Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.0371,
-    "y10": 4.995,
-    "y10_delta_bps": 0.2,
+    "dxy_change_pct": -0.2463,
+    "y10": 5.045,
+    "y10_delta_bps": 5.2,
     "y2": 4.68,
-    "y2_delta_bps": 0.0,
+    "y2_delta_bps": null,
     "real": 2.66,
     "real_delta_bps": 0.0,
     "breakeven": 2.34,
     "be_delta_bps": 0.0,
-    "tip_ief_change_pct": 0.0401,
-    "proxy_change": 2.0621
+    "tip_ief_change_pct": 0.1986,
+    "proxy_change": 2.7728
   },
   "verdict": {
-    "dxyPressure": "Neutral",
-    "y2Pressure": "Neutral",
-    "rateComplexPressure": "Neutral",
+    "dxyPressure": "Bullish",
+    "y2Pressure": "N/A",
+    "rateComplexPressure": "Bearish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 39.5,
+    "distanceToNominalBps": 44.5,
     "realRead": "Flat",
     "breakevenRead": "Flat",
     "realProxyDirection": -1,
@@ -57,7 +57,7 @@
       101.81,
       101.96,
       102.32,
-      102.358
+      102.068
     ],
     "y10": [
       5.24,
@@ -82,7 +82,7 @@
       4.988,
       4.986,
       4.993,
-      4.995
+      5.045
     ],
     "wti": [
       92.6,
@@ -107,7 +107,7 @@
       103.27,
       101.76,
       99.9,
-      101.96
+      102.67
     ],
     "y2": [
       4.65,
