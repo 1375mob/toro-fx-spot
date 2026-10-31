@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-31T18:02:27Z",
+  "updated": "2026-10-31T21:28:49Z",
   "eventDay": false,
   "readings": {
     "dxy_change_pct": -0.0745,
     "y10": 4.929,
     "y10_delta_bps": -6.0,
     "y2": 4.61,
-    "y2_delta_bps": 0.0,
+    "y2_delta_bps": null,
     "real": 2.63,
     "real_delta_bps": -4.0,
     "breakeven": 2.35,
@@ -16,7 +16,7 @@
   },
   "verdict": {
     "dxyPressure": "Neutral",
-    "y2Pressure": "Neutral",
+    "y2Pressure": "N/A",
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
