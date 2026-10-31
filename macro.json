@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T01:49:56Z",
+  "updated": "2026-10-31T07:43:58Z",
   "eventDay": false,
   "readings": {
     "dxy_change_pct": -0.0745,
@@ -12,7 +12,7 @@
     "breakeven": 2.35,
     "be_delta_bps": -3.0,
     "tip_ief_change_pct": -0.3222,
-    "proxy_change": 0.9314
+    "proxy_change": 2.0784
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -26,8 +26,8 @@
     "realProxyDirection": 1,
     "realProxyText": "REAL UP",
     "realProxyConfirmation": "REAL DIVERGES",
-    "inflationProxyRead": "Neutral",
-    "inflationState": "BE DOWN / PROXY FLAT",
+    "inflationProxyRead": "Inflation Up",
+    "inflationState": "DIVERGENCE",
     "r13": "REAL-LED",
     "score": 3,
     "bias": "Moderate Bullish Gold",
@@ -57,7 +57,7 @@
       102.32,
       102.19,
       102.04,
-      101.964
+      101.88
     ],
     "y10": [
       5.293,
@@ -107,7 +107,7 @@
       99.9,
       102.78,
       102.0,
-      102.95
+      104.12
     ],
     "y2": [
       4.67,
