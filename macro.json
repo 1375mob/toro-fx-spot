@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-02T08:16:49Z",
+  "updated": "2026-11-02T18:36:43Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.1266,
-    "y10": 4.929,
-    "y10_delta_bps": -6.0,
+    "dxy_change_pct": -0.1325,
+    "y10": 4.875,
+    "y10_delta_bps": -5.4,
     "y2": 4.61,
     "y2_delta_bps": 0.0,
     "real": 2.63,
     "real_delta_bps": -4.0,
     "breakeven": 2.35,
     "be_delta_bps": -3.0,
-    "tip_ief_change_pct": -0.3222,
-    "proxy_change": -3.544
+    "tip_ief_change_pct": 0.0337,
+    "proxy_change": -7.9139
   },
   "verdict": {
     "dxyPressure": "Neutral",
@@ -20,12 +20,12 @@
     "rateComplexPressure": "Bullish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
-    "distanceToNominalBps": 32.9,
+    "distanceToNominalBps": 27.5,
     "realRead": "Gold Tailwind",
     "breakevenRead": "Inflation Down",
-    "realProxyDirection": 1,
-    "realProxyText": "REAL UP",
-    "realProxyConfirmation": "REAL DIVERGES",
+    "realProxyDirection": -1,
+    "realProxyText": "REAL DOWN",
+    "realProxyConfirmation": "REAL CONFIRMS",
     "inflationProxyRead": "Inflation Down",
     "inflationState": "INFL DOWN CONFIRMED",
     "r13": "REAL-LED",
@@ -56,11 +56,9 @@
       102.19,
       102.04,
       101.88,
-      101.751
+      101.745
     ],
     "y10": [
-      5.293,
-      5.237,
       5.277,
       5.311,
       5.269,
@@ -81,7 +79,8 @@
       4.993,
       5.045,
       4.989,
-      4.929
+      4.929,
+      4.875
     ],
     "wti": [
       91.11,
@@ -105,7 +104,7 @@
       102.78,
       102.0,
       104.12,
-      100.43
+      95.88
     ],
     "y2": [
       4.67,
