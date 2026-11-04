@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-04T01:23:40Z",
+  "updated": "2026-11-04T07:40:08Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": -0.2329,
+    "dxy_change_pct": -0.3927,
     "y10": 4.952,
     "y10_delta_bps": 5.8,
     "y2": 4.59,
-    "y2_delta_bps": 17.7,
+    "y2_delta_bps": null,
     "real": 2.62,
     "real_delta_bps": 2.0,
     "breakeven": 2.29,
     "be_delta_bps": -5.0,
-    "tip_ief_change_pct": 0.1015,
-    "proxy_change": 0.1451
+    "tip_ief_change_pct": 0.09,
+    "proxy_change": 0.6452
   },
   "verdict": {
     "dxyPressure": "Bullish",
-    "y2Pressure": "Strong Bearish",
+    "y2Pressure": "N/A",
     "rateComplexPressure": "Bearish",
     "nominalRegime": "> 4.60",
     "nearestNominalLevel": 4.6,
@@ -56,7 +56,8 @@
       102.04,
       101.88,
       101.75,
-      101.513
+      101.87,
+      101.47
     ],
     "y10": [
       5.311,
@@ -104,7 +105,8 @@
       102.0,
       104.12,
       96.46,
-      96.6
+      96.09,
+      96.71
     ],
     "y2": [
       4.76,
