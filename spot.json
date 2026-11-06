@@ -1,67 +1,11 @@
 {
-  "spot": 4063.01,
-  "changePct": -1.25,
+  "spot": 4069.2,
+  "changePct": 0.14,
   "marketOpen": true,
-  "updated": "2026-11-06T17:04:02Z",
+  "updated": "2026-11-06T22:01:40Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
-    {
-      "time": 1793381400,
-      "open": 3890.48,
-      "high": 3890.48,
-      "low": 3878.78,
-      "close": 3883.9
-    },
-    {
-      "time": 1793383200,
-      "open": 3883.79,
-      "high": 3884.17,
-      "low": 3875.97,
-      "close": 3878.33
-    },
-    {
-      "time": 1793385000,
-      "open": 3878.57,
-      "high": 3883.89,
-      "low": 3877.62,
-      "close": 3880.17
-    },
-    {
-      "time": 1793386800,
-      "open": 3880.06,
-      "high": 3880.93,
-      "low": 3876.26,
-      "close": 3876.74
-    },
-    {
-      "time": 1793388600,
-      "open": 3877.62,
-      "high": 3884.7,
-      "low": 3871.19,
-      "close": 3883.59
-    },
-    {
-      "time": 1793390400,
-      "open": 3882.75,
-      "high": 3887.27,
-      "low": 3877.17,
-      "close": 3880.41
-    },
-    {
-      "time": 1793392200,
-      "open": 3880.24,
-      "high": 3880.24,
-      "low": 3872.07,
-      "close": 3875.51
-    },
-    {
-      "time": 1793394000,
-      "open": 3875.82,
-      "high": 3875.82,
-      "low": 3874.47,
-      "close": 3875.31
-    },
     {
       "time": 1793574000,
       "open": 3875.36,
@@ -1662,8 +1606,78 @@
       "time": 1793984400,
       "open": 4067.68,
       "high": 4067.68,
-      "low": 4062.53,
-      "close": 4063.01
+      "low": 4057.29,
+      "close": 4059.87
+    },
+    {
+      "time": 1793986200,
+      "open": 4059.54,
+      "high": 4062.97,
+      "low": 4053.67,
+      "close": 4060.36
+    },
+    {
+      "time": 1793988000,
+      "open": 4059.94,
+      "high": 4065.55,
+      "low": 4058.94,
+      "close": 4063.41
+    },
+    {
+      "time": 1793989800,
+      "open": 4064.11,
+      "high": 4076.89,
+      "low": 4064.11,
+      "close": 4076.6
+    },
+    {
+      "time": 1793991600,
+      "open": 4075.85,
+      "high": 4078.14,
+      "low": 4064.66,
+      "close": 4065.0
+    },
+    {
+      "time": 1793993400,
+      "open": 4065.51,
+      "high": 4065.51,
+      "low": 4061.41,
+      "close": 4063.33
+    },
+    {
+      "time": 1793995200,
+      "open": 4062.25,
+      "high": 4065.54,
+      "low": 4059.39,
+      "close": 4063.87
+    },
+    {
+      "time": 1793997000,
+      "open": 4063.4,
+      "high": 4069.18,
+      "low": 4062.24,
+      "close": 4067.37
+    },
+    {
+      "time": 1793998800,
+      "open": 4067.12,
+      "high": 4067.12,
+      "low": 4063.06,
+      "close": 4063.53
+    },
+    {
+      "time": 1794000600,
+      "open": 4063.7,
+      "high": 4070.34,
+      "low": 4063.06,
+      "close": 4068.69
+    },
+    {
+      "time": 1794002400,
+      "open": 4068.98,
+      "high": 4069.27,
+      "low": 4067.26,
+      "close": 4069.2
     }
   ],
   "drivers": [
@@ -1671,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 91.91,
-      "changePct": 0.07,
+      "value": 91.85,
+      "changePct": 0.13,
       "dir": "up",
       "proxy": "IEF inv",
       "showValue": false
@@ -1681,8 +1695,8 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 29.1,
-      "changePct": 0.62,
+      "value": 29.14,
+      "changePct": 0.78,
       "dir": "up",
       "proxy": "UUP",
       "showValue": false
@@ -1691,12 +1705,12 @@
       "key": "oil",
       "label": "Oil",
       "symbol": "USO",
-      "value": 147.6,
-      "changePct": -0.41,
-      "dir": "down",
+      "value": 148.41,
+      "changePct": 0.13,
+      "dir": "up",
       "proxy": "USO",
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-11-06T17:04:02Z"
+  "driversUpdated": "2026-11-06T22:01:40Z"
 }
