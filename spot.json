@@ -1,8 +1,8 @@
 {
-  "spot": 4065.97,
+  "spot": 4065.98,
   "changePct": -0.0,
   "marketOpen": true,
-  "updated": "2026-11-08T01:47:07Z",
+  "updated": "2026-11-08T08:01:47Z",
   "source": "XAU/USD",
   "contract": "Gold spot",
   "candles": [
@@ -1685,8 +1685,8 @@
       "key": "rates",
       "label": "Rates",
       "symbol": "IEF",
-      "value": 91.85,
-      "changePct": 0.13,
+      "value": 91.86,
+      "changePct": 0.12,
       "dir": "up",
       "proxy": "IEF inv",
       "showValue": false
@@ -1695,8 +1695,8 @@
       "key": "dollar",
       "label": "Dollar",
       "symbol": "UUP",
-      "value": 29.14,
-      "changePct": 0.78,
+      "value": 29.13,
+      "changePct": 0.73,
       "dir": "up",
       "proxy": "UUP",
       "showValue": false
@@ -1712,5 +1712,5 @@
       "showValue": false
     }
   ],
-  "driversUpdated": "2026-11-06T22:01:40Z"
+  "driversUpdated": "2026-11-08T08:01:47Z"
 }
