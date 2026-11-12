@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-12T01:08:31Z",
+  "updated": "2026-11-12T08:15:55Z",
   "eventDay": false,
   "readings": {
-    "dxy_change_pct": 0.5977,
+    "dxy_change_pct": -0.0019,
     "y10": 4.998,
     "y10_delta_bps": 1.5,
     "y2": 4.56,
@@ -11,11 +11,11 @@
     "real_delta_bps": 3.0,
     "breakeven": 2.22,
     "be_delta_bps": -1.0,
-    "tip_ief_change_pct": 0.2126,
-    "proxy_change": -0.0697
+    "tip_ief_change_pct": 0.0485,
+    "proxy_change": 0.705
   },
   "verdict": {
-    "dxyPressure": "Bearish",
+    "dxyPressure": "Neutral",
     "y2Pressure": "Neutral",
     "rateComplexPressure": "Neutral",
     "nominalRegime": "> 4.60",
@@ -29,9 +29,9 @@
     "inflationProxyRead": "Neutral",
     "inflationState": "BE DOWN / PROXY FLAT",
     "r13": "REAL-LED",
-    "score": -3,
-    "bias": "Moderate Bearish Gold",
-    "tone": "bear"
+    "score": 0,
+    "bias": "Mixed",
+    "tone": "flat"
   },
   "spark": {
     "dxy": [
@@ -57,7 +57,8 @@
       102.3,
       101.65,
       102.23,
-      102.841
+      102.91,
+      102.908
     ],
     "y10": [
       5.24,
@@ -107,7 +108,8 @@
       90.83,
       86.85,
       86.04,
-      85.98
+      86.53,
+      87.14
     ],
     "y2": [
       4.92,
